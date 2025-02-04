@@ -1,0 +1,88 @@
+%% Font size %%
+\documentclass[11pt]{article}
+
+%% Load the custom package
+\usepackage{Mathdoc}
+
+%% Numéro de séquence %% Titre de la séquence %%
+\renewcommand{\centerhead}{Chap. 7 : Multiplications, divisions}
+
+%% Spacing commands %%
+\renewcommand{\baselinestretch}{1} \setlength{\parindent}{0pt}
+
+\begin{document}
+
+
+\section{Multiplications}
+
+\begin{rappel}
+\begin{tabular}{ccccc}
+$12,3$&$\times$&$3,2$&=&$39,36$ \\
+facteur 1& $\times$ & facteur 2& = & produit \\
+\end{tabular}
+\end{rappel}
+
+\begin{exercicedevoir}[0]
+\textit{Calculer $4,5 \times 2,1$.}
+\end{exercicedevoir}
+
+\begin{multicols}{2}
+\hfill\opmul[resultstyle=\color{black},displayshiftintermediary=all,displayintermediary=all,decimalsepsymbol={,}] {4,5}{2,1}\hfill \hfill \\ \\
+
+\columnbreak
+
+\circled{1} On pose correctement la multiplication. \\
+\circled{2} On calcule $2 \times 4,5$. \\
+\circled{3} On pose le \textbf{0} ou le \textbullet \\
+\circled{4} On calcule $1 \times 4,5$. \\
+\circled{5} On calcul la somme des deux résultats. \\
+\circled{6} On place la virgule au bon endroit (Deux chiffres après la virgules).
+\end{multicols}
+\section{Multiplications par 10, 100 \ldots}
+
+\begin{propriete}
+Multiplier un nombre \textbf{entier} par 10, 100, 1~000 \ldots ~
+revient à ajouter autant de zéros à droite de ce nombre.
+\end{propriete}
+
+\begin{propriete}
+Multiplier un nombre \textbf{décimal} par 10, 100, 1~000 \ldots ~
+revient à décaler la virgule vers la \underline{droite} du nombre de
+rang correspondant au nombre de zéros.
+\end{propriete}
+
+\begin{exemple}
+\phantom{} \vspace{-1cm}
+\begin{multicols}{2}
+\begin{enumerate}[label=\Alph*]
+\item $= 12 \times 10 $ \\ $ =120$
+\item $= 2,5 \times 10 $ \\ $ =25$
+\item $= 657 \times 100 $ \\ $ =65~700$
+\item $= 45,663 \times 100 $ \\ $ =4~566,3$
+\item $= 345~645 \times 10 $ \\ $ =3~456~450$
+\item $= 0,7 \times 1~000 $ \\ $ =700$
+\end{enumerate}
+\end{multicols}
+\end{exemple}
+
+\section{Multiplication par 0,1, 0,01, 0,001 \ldots}
+
+\begin{propriete}
+Multiplier un nombre \textbf{entier} ou \textbf{décimal} par 0,1,
+0,01, 0,001 \ldots ~revient à décaler la virgule vers la
+\underline{gauche} du nombre de rang correspondant au nombre de zéros.
+\end{propriete}
+
+\begin{exemple}
+\phantom{} \vspace{-1cm}
+\begin{multicols}{2}
+\begin{enumerate}[label=\Alph*]
+\item $= 12 \times 0,1 $ \\ $ =1,2$
+\item $= 134,9 \times 0,01 $ \\ $ =1,349$
+\item $= 180~342 \times 0,001 $ \\ $ =180,342$
+\item $= 0,003~5 \times 0,01 $ \\ $ =0,000~035$
+\end{enumerate}
+\end{multicols}
+\end{exemple}
+
+\end{document}
