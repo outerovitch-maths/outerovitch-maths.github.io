@@ -1,0 +1,187 @@
+\input{~/Documents/Cours/.parametre/parametre-fa/parametre-fa.tex}
+
+\begin{document}
+
+
+\entete{14-15}{1}{Angles}
+
+\colonnesep{0}
+
+
+\hfill
+\hfill
+
+\nom
+
+\hfill
+\hfill
+
+\appreciationnote{10}
+
+\exercice \diff[1] \\
+\textbf{Mesurer les angles suivants.}
+
+\begin{multicols}{3}
+
+\pgfmathsetmacro{\angle}{40}
+\input{data/angle-1.tex}
+
+\pgfmathsetmacro{\angle}{110}
+\input{data/angle-1.tex}
+
+\pgfmathsetmacro{\angle}{90}
+\input{data/angle-1.tex}
+
+
+\end{multicols}
+
+\begin{multicols}{3}
+
+\pgfmathsetmacro{\angle}{70}
+\input{data/angle-1.tex}
+
+\pgfmathsetmacro{\angle}{140}
+\input{data/angle-1.tex}
+
+\pgfmathsetmacro{\angle}{20}
+\input{data/angle-1.tex}
+
+\end{multicols}
+
+
+\newpage
+\exercice \diff[2] \\
+\textbf{Mesurer les angles suivants.}
+
+\begin{multicols}{3}
+
+\pgfmathsetseed{7564}
+\input{data/angle-3.tex}
+
+\pgfmathsetseed{12345}
+\input{data/angle-3.tex}
+
+\pgfmathsetseed{98765}
+\input{data/angle-3.tex}
+
+
+\end{multicols}
+
+\begin{multicols}{3}
+
+\pgfmathsetseed{2345}
+\input{data/angle-3.tex}
+
+\pgfmathsetseed{98}
+\input{data/angle-3.tex}
+
+\pgfmathsetseed{9876}
+\input{data/angle-3.tex}
+
+\end{multicols}
+
+
+\exercice \diff[1] \\
+\textbf{Construire les angles demandés.}
+
+\vfill
+
+\begin{multicols}{3}
+
+\pgfmathsetseed{54}
+\input{data/angle-2.tex}
+
+\pgfmathsetseed{1234}
+\input{data/angle-2.tex}
+
+\pgfmathsetseed{7654}
+\input{data/angle-2.tex}
+
+\end{multicols}
+
+\newpage
+\exercice \diff[2] \\
+\textbf{Dans le cadre ci-dessous, construire les angles suivants.} \\
+\textbf{$\widehat{A} = 35$ \degre ; $\widehat{B} = 75$ \degre ; $\widehat{C} = 115$ \degre ; $\widehat{D} = 122$ \degre ; $\widehat{E} = 47$ \degre ; $\widehat{F} = 92$ \degre ; $\widehat{G} = 154$ \degre ; $\widehat{H} = 78$ \degre} \\
+
+\encart{7cm}
+
+\mc{
+\exercice \diff[2] \\
+\textbf{Dans le cadre ci-dessous, reproduire la figure ci-contre (les côtés sont donnés en centimètres et les angles en degrés).}
+\columnbreak
+\myfig{0.7\textwidth}{fig.pdf}
+
+
+}
+
+\encart{7cm}
+
+\newpage
+\mc{
+\exercice \diff[3] \\
+\textbf{Mesurer les angles suivants puis les ranger dans le tableau ci-contre en indiquant leur mesure.}
+
+\cntr{
+\begin{tabular}{|c|c|c|}
+\hline
+Obtus&Droits&Aigus \\ \hline
+\phantom{00000000000}&\phantom{00000000000}&\phantom{00000000000} \\ 
+&& \\ 
+&& \\ \hline
+\end{tabular}} }
+
+\begin{multicols}{3}
+
+\pgfmathsetseed{654}
+\newcommand{\point}{A}
+\input{data/angle-4.tex}
+
+\pgfmathsetseed{45}
+\renewcommand{\point}{B}
+\input{data/angle-4.tex}
+
+\pgfmathsetseed{765}
+\renewcommand{\point}{C}
+\input{data/angle-4.tex}
+
+
+\end{multicols}
+
+\begin{multicols}{3}
+
+\pgfmathsetseed{987}
+\newcommand{\point}{D}
+\input{data/angle-4.tex}
+
+\pgfmathsetseed{999}
+\renewcommand{\point}{E}
+\input{data/angle-4.tex}
+
+\pgfmathsetseed{345}
+\renewcommand{\point}{F}
+\input{data/angle-4.tex}
+
+\end{multicols}
+
+\begin{multicols}{3}
+
+\pgfmathsetseed{444}
+\newcommand{\point}{G}
+\input{data/angle-4.tex}
+
+\pgfmathsetseed{888}
+\renewcommand{\point}{H}
+\input{data/angle-4.tex}
+
+\pgfmathsetseed{222}
+\renewcommand{\point}{I}
+\input{data/angle-4.tex}
+
+\end{multicols}
+
+
+
+
+
+\end{document}

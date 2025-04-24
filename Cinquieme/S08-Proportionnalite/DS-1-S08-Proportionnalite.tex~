@@ -1,0 +1,201 @@
+%% Font size %%
+\documentclass[11pt]{article}
+
+%% Load the custom package
+\usepackage{Mathdoc}
+
+%% Numéro de séquence %% Titre de la séquence %%
+\renewcommand{\centerhead}{}
+
+%% Spacing commands %%
+\renewcommand{\baselinestretch}{1} \setlength{\parindent}{0pt}
+
+\begin{document}
+
+\phantom{0}
+\vspace{-1.5cm}
+
+\begin{center}
+\duree{1 heures} 
+\total{25 points}
+\coefficient{1}
+\calculatrice{1}
+\brouillon
+\soin
+\recherche 
+\copieseparee{1}
+\end{center}
+
+\begin{exercicedevoir}[4][Reconnaître une situation]
+Dire si les tableaux suivants sont de tableaux de proportionnalité. Justifier.
+\begin{multicols}{2}
+\begin{enumerate}[itemsep=2em]
+\item $\renewcommand{\arraystretch}{1.5}
+\begin{array}{|c|c|c|}
+\hline
+\cellcolor{white} \phantom{000}7\phantom{000} & \cellcolor{white} \phantom{000}8\phantom{000} & \cellcolor{white} \phantom{000}9\phantom{000}\\
+\hline
+12 & 13 & 14\\
+\hline
+\end{array}
+\renewcommand{\arraystretch}{1}$
+
+\item $\renewcommand{\arraystretch}{1.5}
+\begin{array}{|c|c|c|}
+\hline
+\cellcolor{white} \phantom{000}16\phantom{000} & \cellcolor{white} \phantom{000}10\phantom{000} & \cellcolor{white} \phantom{000}14\phantom{000}\\
+\hline
+8 & 5 & 7\\
+\hline
+\end{array}
+\renewcommand{\arraystretch}{1.5}$
+
+\item $\renewcommand{\arraystretch}{1.5}
+\begin{array}{|c|c|c|}
+\hline
+\cellcolor{white} \phantom{000}9\phantom{000} & \cellcolor{white} \phantom{000}8\phantom{000} & \cellcolor{white} \phantom{000}6\phantom{000}\\
+\hline
+7 & 6 & 4\\
+\hline
+\end{array}
+\renewcommand{\arraystretch}{1.5}$
+
+\item $\renewcommand{\arraystretch}{1.5}
+\begin{array}{|c|c|c|}
+\hline
+\cellcolor{white} \phantom{000}5{,}5\phantom{000} & \cellcolor{white} \phantom{000}6\phantom{000} & \cellcolor{white} \phantom{000}1\phantom{000}\\
+\hline
+38{,}5 & 42 & 7\\
+\hline
+\end{array}
+\renewcommand{\arraystretch}{1.5}$
+\end{enumerate}
+\end{multicols}
+
+\end{exercicedevoir}
+
+\begin{exercicedevoir}[2][Reconnaître une situation]
+\begin{enumerate}[itemsep=1.4em]
+\item Teresa achète dans un magasin de bricolage des outils.\\Elle  repart avec 5 outils pour $12$\,\,€.\\ Arthur achète quant à lui, au même endroit 15 outils pour $36$\,\,€.\\Le prix des outils est-il proportionnel à la quantité achetée  ?
+\item Yasmine vient d'avoir 9 ans cette année. Son père David vient de fêter  son 42ème anniversaire.\\L'âge de son père est-il proportionnel à l'âge de Yasmine ?
+\end{enumerate}
+\end{exercicedevoir}
+
+\begin{exercicedevoir}[4][Résoudre un problème simple]
+\begin{enumerate}[itemsep=1em]
+\item \textbf {a.}  Dalila a repéré, dans un magasin de bricolage, des ampoules qui l'intéressent. Elle lit que 3 ampoules coûtent $11$\,\,€. Elle veut en acheter 6.\\ Combien va-t-elle dépenser\,? \\\textbf {b.}  Bernard veut lui aussi acheter ces ampoules. Il dispose de $44$\,\,€.\\ Combien peut-il en acheter\,?\\
+\item \textbf {a.}  Sur une carte sur laquelle 3 cm représente 8\,km dans la réalité,
+Nadia mesure son trajet et elle trouve une distance de 6 cm. \\À quelle distance cela correspond dans la réalité\,? \\ \textbf {b.}  Deux villes sont distantes de 40\,km. Quelle distance va-t-on mesurer sur la carte entre ces deux villes\,?
+\end{enumerate}
+\end{exercicedevoir}
+
+\begin{exercicedevoir}[6][Compléter un tableau]
+Avec la méthode de votre choix, compléter les tableaux de
+proportionnalité suivants. Justifier.
+\begin{multicols}{2}
+\begin{enumerate}
+\item 
+$\renewcommand{\arraystretch}{1.5}
+\begin{array}{|c|c|c|c|} \hline
+\text{Quantité A} & 12 & \ldots & 9 \\
+\hline
+\text{Quantité B} & 8 & 6 & 6 \\ 
+\hline
+\end{array}$
+
+\item 
+$\renewcommand{\arraystretch}{1.5}
+\begin{array}{|c|c|c|c|}
+\hline
+\text{Quantité A} & 15 & 10 & \ldots \\ 
+\hline
+\text{Quantité B} & 3 & 2 & 5 \\ 
+\hline
+\end{array}$
+
+\item 
+$\renewcommand{\arraystretch}{1.5}
+\begin{array}{|c|c|c|c|}
+\hline
+\text{Quantité A} & \ldots & 14 & 21 \\ 
+\hline
+\text{Quantité B} & 5 & 10 & 15 \\ 
+\hline
+\end{array}$
+
+\item 
+$\renewcommand{\arraystretch}{1.5}
+\begin{array}{|c|c|c|c|}
+\hline
+\text{Quantité A} & 18 & 12 & 6 \\ 
+\hline
+\text{Quantité B} & 9 & \ldots & 3 \\ 
+\hline
+\end{array}$
+
+\item 
+$\renewcommand{\arraystretch}{1.5}
+\begin{array}{|c|c|c|c|}
+\hline
+\text{Quantité A} & 25 & 15 & 5 \\ 
+\hline
+\text{Quantité B} & \ldots & 6 & 2 \\ 
+\hline
+\end{array}$
+
+\item 
+$\renewcommand{\arraystretch}{1.5}
+\begin{array}{|c|c|c|c|}
+\hline
+\text{Quantité A} & 16 & 8 & 4 \\ 
+\hline
+\text{Quantité B} & 12 & 6 & \ldots \\ 
+\hline
+\end{array}$
+\end{enumerate}
+\end{multicols}
+
+
+
+\end{exercicedevoir}
+
+\begin{exercicedevoir}[2][Résoudre un problème complexe]
+\begin{enumerate}
+\item Nadia doit acheter du carrelage. \\Sur la notice, il est indiqué de prévoir 100 carreaux pour 4 m$^2$. \\ Combien doit-elle en acheter pour une surface de 3 m$^2$ ?
+\item Un cycliste parcourt en moyenne $129,6$ km en 6 heures.
+\\ Quelle distance va-t-il parcourir, à la même vitesse, en 13 heures ?
+\end{enumerate}
+\end{exercicedevoir}
+
+\begin{exercicedevoir}[3][Résoudre un problème de vitesse]
+\begin{enumerate} 
+\item Elsa met 1\,h\,45\,min pour aller jusqu'à sa location de vacances qui est à une distance de 157{,}5 km. Déterminer sa vitesse moyenne.
+\item Si Benjamin roule à 110 km/h, combien de temps lui faudra-t-il  pour aller dans la maison de ses parents qui est à une distance de 170{,}5 km ?
+\end{enumerate}
+\end{exercicedevoir}
+
+\begin{exercicedevoir}[4][Problème à prise d'initiative]
+Voici la recette du far breton pour 6 personnes :
+\begin{itemize}
+    \item Mélanger 4 œufs avec120g de sucre jusqu'à blanchiment ;
+    \item Ajouter 180g de farine petit à petit en évitant les grumeaux ;
+    \item Incorporer 1L lait progressivement ;
+    \item Ajouter 16 pruneaux ;
+    \item Verser dans un moule beurré et enfourner à 180°C pendant 45 minutes.
+\end{itemize}
+Marie souhaite adapter cette recette pour 10 personnes, calculer les
+quantités nécessaires.
+\end{exercicedevoir}
+
+\nonewpage
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% TeX-master: t
+%%% gptel-model: deepseek-chat
+%%% gptel--backend-name: "DeepSeek"
+%%% gptel--bounds: ((response (3342 3351) (3384 3526) (3559 3703) (3736 3882) (3915 4059) (4092 4236) (4269 4403) (5343 5381) (5390 5720)))
+%%% End:
+
