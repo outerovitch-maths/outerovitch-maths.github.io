@@ -1,0 +1,152 @@
+%% Font size %%
+\documentclass[11pt]{article}
+
+%% Load the custom package
+\usepackage{Mathdoc}
+
+%% Numéro de séquence %% Titre de la séquence %%
+\renewcommand{\centerhead}{}
+
+%% Spacing commands %%
+\renewcommand{\baselinestretch}{1} \setlength{\parindent}{0pt}
+
+\begin{document}
+
+\entetedevoirs{10}
+
+\begin{exercicedevoir}[10]
+
+\begin{enumerate}
+\item Repasser en \underline{rouge} les \emph{droites}.
+\item Repasser en \underline{vert} les \emph{demi-droites}.
+\item Repasser en \underline{bleu} les \emph{segments}.
+
+
+\bigskip
+
+\begin{center}
+\begin{tikzpicture}[scale=1.2, every node/.style={inner sep=5pt, font=\small}]
+\clip (-3,-3) rectangle (8,5);
+% Points (coordonnées choisies pour une belle disposition)
+\coordinate (K) at (0,0); \coordinate (L) at (3,0.5); \coordinate (M) at (1.5,2.2); \coordinate (N) at (-1,1.7); \coordinate (O) at (4,-1.2); \coordinate (P) at (6,1.6); \coordinate (Q) at (2.7,3.2); \coordinate (R) at (-2,-0.6); \coordinate (S) at (0,3.8); \coordinate (T) at (5,-0.6); \coordinate (U) at (-1.8,2.9); \coordinate (V) at (7,0.2);
+
+% Draw the "background" figure: points as filled circles + labels
+\foreach \pt in {K,L,N,O,P,Q,T,U,V}{ \draw (\pt) +(-0.1,0.1) -- +(0.1,-0.1) (\pt) +(-0.1,-0.1) -- +(0.1,0.1); }
+% Labels slightly offset
+\node[above left] at (K) {K}; \node[above right] at (L) {L};
+% \node[above] at (M) {M};
+\node[left] at (N) {N}; \node[below left] at (O) {O}; \node[above right] at (P) {P}; \node[above right] at (Q) {Q}; \node[right] at (S) {S}; \node[below] at (T) {T}; \node[left] at (U) {U}; \node[right] at (V) {V};
+
+% --- ELEMENTS à identifier (tracés en noir fin pour l'exercice) --- Droites (tracer en étendant la ligne dans les deux directions) droite (KL)
+\draw[line width=0.6pt] ($(K)!-3!(L)$) -- ($(K)!4!(L)$);
+% droite (NR)
+\draw[line width=0.6pt] ($(N)!-3!(R)$) -- ($(N)!4!(R)$);
+% droite (PV)
+\draw[line width=0.6pt] ($(P)!-4!(V)$) -- ($(P)!4!(V)$);
+
+% Demi-droites (rayons) [from first point through second, extend in one direction] demi-droite [MS)
+\draw[line width=0.6pt] (M) -- ($(M)!4!(S)$);
+% demi-droite [LO)
+\draw[line width=0.6pt] (L) -- ($(L)!4!(O)$);
+% demi-droite [QK)
+\draw[line width=0.6pt] (Q) -- ($(Q)!4!(K)$);
+
+% Segments
+\draw[line width=0.6pt] (T) -- (O); % [TO]
+\draw[line width=0.6pt] (U) -- (N); % [UN]
+\draw[line width=0.6pt] (L) -- (M); % [LM]
+
+% (optionnel) petites marques pour différencier visualement (non colorées)
+\foreach \pt in {K,L,M,N,O,P,Q,R,S,T,U,V}{ \draw[black] (\pt) circle
+  (0.0cm); % point already drawn
+}
+
+
+\end{tikzpicture}
+\end{center}
+
+\item Récapituler ces résultats dans le tableau.
+\begin{center}
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{|p{0.2\linewidth}|p{0.6\linewidth}|}
+\hline
+Droites &  \\
+\hline
+Demi-droites &  \\
+\hline
+Segments &  \\
+\hline
+\end{tabular}
+\end{center}
+
+\end{enumerate}
+\end{exercicedevoir}
+% ---------------------------
+% SOLUTION (décommentez pour voir les couleurs)
+% ---------------------------
+% Pour afficher la solution, remplacez la ligne "%<solution>" par "" (décommenter tout le bloc).
+%
+% Exemple : enlevez les '%' devant \begin{center} et le bloc suivant.
+%
+% Solution : droites en rouge, demi-droites en vert, segments en bleu.
+%
+%\begin{center}
+% \begin{tikzpicture}[scale=1, every node/.style={inner sep=1pt, font=\small}]
+%  % mêmes points
+%  \coordinate (K) at (0,0);
+%  \coordinate (L) at (3,0.5);
+%  \coordinate (M) at (1.5,2.2);
+%  \coordinate (N) at (-1,1.7);
+%  \coordinate (O) at (4,-1.2);
+%  \coordinate (P) at (6,1.6);
+%  \coordinate (Q) at (2.7,3.2);
+%  \coordinate (R) at (-2,-0.6);
+%  \coordinate (S) at (0,3.8);
+%  \coordinate (T) at (5,-0.6);
+%  \coordinate (U) at (-1.8,2.9);
+%  \coordinate (V) at (7,0.2);
+%
+%  % Points
+%  \foreach \pt in {K,L,M,N,O,P,Q,R,S,T,U,V}{
+%    \fill (\pt) circle (1.8pt);
+%  }
+%  \node[above left]  at (K) {K};
+%  \node[right]       at (L) {L};
+%  \node[above]       at (M) {M};
+%  \node[left]        at (N) {N};
+%  \node[below right] at (O) {O};
+%  \node[above right] at (P) {P};
+%  \node[above right] at (Q) {Q};
+%  \node[left]        at (R) {R};
+%  \node[above]       at (S) {S};
+%  \node[below]       at (T) {T};
+%  \node[left]        at (U) {U};
+%  \node[right]       at (V) {V};
+%
+%  % Solutions colorées
+%  % Droites en rouge
+%  \draw[red, line width=1pt] ($(K)!-3!(L)$) -- ($(K)!4!(L)$); % (KL)
+%  \draw[red, line width=1pt] ($(N)!-3!(R)$) -- ($(N)!4!(R)$); % (NR)
+%  \draw[red, line width=1pt] ($(P)!-4!(V)$) -- ($(P)!4!(V)$); % (PV)
+%
+%  % Demi-droites en vert
+%  \draw[green!60!black, line width=1pt] (M) -- ($(M)!4!(S)$); % [MS)
+%  \draw[green!60!black, line width=1pt] (L) -- ($(L)!4!(O)$); % [LO)
+%  \draw[green!60!black, line width=1pt] (Q) -- ($(Q)!4!(K)$); % [QK)
+%
+%  % Segments en bleu
+%  \draw[blue, line width=1pt] (T) -- (O); % [TO]
+%  \draw[blue, line width=1pt] (U) -- (N); % [UN]
+%  \draw[blue, line width=1pt] (L) -- (M); % [LM]
+%
+% \end{tikzpicture}
+%\end{center}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% TeX-master: t
+%%% End:
+
