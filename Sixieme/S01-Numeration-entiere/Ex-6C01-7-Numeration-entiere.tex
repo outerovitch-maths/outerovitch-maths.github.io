@@ -1,0 +1,27 @@
+%% Font size %%
+\documentclass[11pt]{article}
+
+%% Load the custom package
+\usepackage{Mathdoc}
+
+%% Code séquence et n° de fiche déduits du nom du fichier (\jobname), au
+%% format Type-{Niveau}C{NN}-{Item}-Nom (ex: Ex-6C01-7-Numeration-entiere)
+\StrBetween[1,2]{\jobname}{-}{-}[\filecode]
+\StrBetween[2,3]{\jobname}{-}{-}[\fichenumauto]
+\StrBehind[3]{\jobname}{-}[\filetitleraw]
+\StrSubstitute{\filetitleraw}{-}{ }[\filetitle]
+\edef\centerhead{\filecode\space- \filetitle}
+\edef\fichenum{\fichenumauto}
+
+%% Spacing commands %%
+\renewcommand{\baselinestretch}{1} \setlength{\parindent}{0pt}
+
+%%\pagestyle{empty}
+
+\begin{document}
+
+\begin{exercice}[1][Consignes]
+
+\end{exercice}
+
+\end{document}
