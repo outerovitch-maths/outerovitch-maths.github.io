@@ -1,0 +1,115 @@
+%% Font size %%
+\documentclass[11pt]{article}
+
+%% Load the custom package
+\usepackage{Mathdoc}
+
+%% Numéro de séquence %% Titre de la séquence %%
+\renewcommand{\centerhead}{Fractions - Éval 1 : Coloriages}
+
+%% Spacing commands %%
+\renewcommand{\baselinestretch}{1} \setlength{\parindent}{0pt}
+
+%% Carré divisé en #1 parts égales (bandes verticales), #2 parts coloriées, côté #3 cm
+\newcommand{\squarefrac}[3]{%
+\begin{tikzpicture}[baseline=0pt]
+\ifnum#2>0
+\foreach \i in {0,...,\numexpr#2-1\relax}{
+\fill[gray!55] ({\i*#3/#1},0) rectangle ({(\i+1)*#3/#1},#3);
+}
+\fi
+\foreach \i in {1,...,\numexpr#1-1\relax}{
+\draw (\i*#3/#1,0) -- (\i*#3/#1,#3);
+}
+\draw[thick] (0,0) rectangle (#3,#3);
+\end{tikzpicture}%
+}
+
+%% Camembert divisé en #1 secteurs égaux, #2 secteurs coloriés, rayon #3 cm
+\newcommand{\piefrac}[3]{%
+\begin{tikzpicture}[baseline=0pt]
+\ifnum#2>0
+\foreach \i in {0,...,\numexpr#2-1\relax}{
+\fill[gray!55] (0,0) -- ({90-\i*360/#1}:#3) arc ({90-\i*360/#1}:{90-(\i+1)*360/#1}:#3) -- cycle;
+}
+\fi
+\foreach \i in {0,...,\numexpr#1-1\relax}{
+\draw (0,0) -- ({90-\i*360/#1}:#3);
+}
+\draw[thick] (0,0) circle (#3);
+\end{tikzpicture}%
+}
+
+\begin{document}
+
+\phantom{0}
+\vspace{-.5cm}
+
+\entetedevoirs{8}
+
+\begin{center}
+\duree{20 minutes}
+\total{8 points}
+\soin
+\end{center}
+
+\begin{exercicedevoir}[2][Colorier une fraction (fraction < 1)]
+Pour chaque figure, colorie la fraction indiquée.
+\begin{center}
+\begin{tabular}{cccc}
+$\dfrac{3}{4}$ & $\dfrac{2}{5}$ & $\dfrac{5}{6}$ & $\dfrac{1}{3}$ \\[.3cm]
+\squarefrac{4}{0}{2} & \piefrac{5}{0}{1} & \squarefrac{6}{0}{2} & \piefrac{3}{0}{1} \\
+\end{tabular}
+\end{center}
+\end{exercicedevoir}
+
+\begin{exercicedevoir}[2][Retrouver une fraction (fraction < 1)]
+Pour chaque figure déjà coloriée, écris la fraction correspondante.
+\begin{center}
+\begin{tabular}{cccc}
+\piefrac{5}{3}{1} & \squarefrac{4}{1}{2} & \piefrac{6}{4}{1} & \squarefrac{3}{2}{2} \\[.2cm]
+$\dfrac{\ldots}{\ldots}$ & $\dfrac{\ldots}{\ldots}$ & $\dfrac{\ldots}{\ldots}$ & $\dfrac{\ldots}{\ldots}$ \\
+\end{tabular}
+\end{center}
+\end{exercicedevoir}
+
+\begin{exercicedevoir}[2][Colorier une fraction (fraction > 1)]
+Pour chaque fraction, colorie le nombre de parts correspondant sur les figures proposées (une figure entière correspond à 1).
+\begin{center}
+\begin{tabular}{cc}
+$\dfrac{5}{3}$ & $\dfrac{7}{4}$ \\[.3cm]
+\piefrac{3}{0}{1} \hspace{.3cm} \piefrac{3}{0}{1} & \squarefrac{4}{0}{2} \hspace{.3cm} \squarefrac{4}{0}{2} \\
+\end{tabular}
+
+\vspace{.4cm}
+
+\begin{tabular}{cc}
+$\dfrac{8}{5}$ & $\dfrac{9}{6}$ \\[.3cm]
+\piefrac{5}{0}{1} \hspace{.3cm} \piefrac{5}{0}{1} & \squarefrac{6}{0}{2} \hspace{.3cm} \squarefrac{6}{0}{2} \\
+\end{tabular}
+\end{center}
+\end{exercicedevoir}
+
+\begin{exercicedevoir}[2][Retrouver une fraction (fraction > 1)]
+Pour chaque ensemble de figures déjà coloriées, écris la fraction correspondante (une figure entière correspond à 1).
+\begin{center}
+\begin{tabular}{cc}
+\piefrac{2}{2}{1} \hspace{.3cm} \piefrac{2}{1}{1} & \squarefrac{5}{5}{2} \hspace{.3cm} \squarefrac{5}{3}{2} \\[.2cm]
+$\dfrac{\ldots}{\ldots}$ & $\dfrac{\ldots}{\ldots}$ \\
+\end{tabular}
+
+\vspace{.4cm}
+
+\begin{tabular}{cc}
+\piefrac{4}{4}{1} \hspace{.3cm} \piefrac{4}{2}{1} & \squarefrac{6}{6}{2} \hspace{.3cm} \squarefrac{6}{4}{2} \\[.2cm]
+$\dfrac{\ldots}{\ldots}$ & $\dfrac{\ldots}{\ldots}$ \\
+\end{tabular}
+\end{center}
+\end{exercicedevoir}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% End:
