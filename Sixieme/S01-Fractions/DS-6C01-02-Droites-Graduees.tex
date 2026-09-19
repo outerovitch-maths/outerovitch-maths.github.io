@@ -1,0 +1,132 @@
+%% Font size %%
+\documentclass[11pt]{article}
+
+%% Load the custom package
+\usepackage{Mathdoc}
+
+%% Numéro de séquence %% Titre de la séquence %%
+\renewcommand{\centerhead}{Fractions - Éval 2 : Droites graduées}
+
+%% Spacing commands %%
+\renewcommand{\baselinestretch}{1} \setlength{\parindent}{0pt}
+
+%% Droite graduée vide, unité #1 sur \droitex cm, #2 = nombre max (entier), #3 = graduations par unité
+\newcommand{\droitex}{2.2cm}
+\newcommand{\droitevide}[2]{%
+\begin{tikzpicture}[baseline=-0.5ex, x=\droitex]
+\useasboundingbox (-0.3,-0.5) rectangle (#1+0.4,0.7);
+\draw[thick,-latex] (-0.3,0) -- (#1+0.4,0);
+\foreach \i in {0,...,#1}{
+\draw[thick] (\i,-4pt) -- (\i,4pt);
+\node[below] at (\i,-4pt) {\i};
+}
+\foreach \i in {0,...,\numexpr#1*#2\relax}{
+\pgfmathsetmacro{\x}{\i/#2}
+\pgfmathtruncatemacro{\reste}{mod(\i,#2)}
+\ifnum\reste=0\relax\else
+\draw (\x,-2pt) -- (\x,2pt);
+\fi
+}
+\end{tikzpicture}%
+}
+
+%% Droite graduée avec points placés, #1 = max, #2 = graduations par unité, #3 = liste "x/Lettre,..."
+\newcommand{\droitepoints}[3]{%
+\begin{tikzpicture}[baseline=-0.5ex, x=\droitex]
+\useasboundingbox (-0.3,-0.5) rectangle (#1+0.4,0.7);
+\draw[thick,-latex] (-0.3,0) -- (#1+0.4,0);
+\foreach \i in {0,...,#1}{
+\draw[thick] (\i,-4pt) -- (\i,4pt);
+\node[below] at (\i,-4pt) {\i};
+}
+\foreach \i in {0,...,\numexpr#1*#2\relax}{
+\pgfmathsetmacro{\x}{\i/#2}
+\pgfmathtruncatemacro{\reste}{mod(\i,#2)}
+\ifnum\reste=0\relax\else
+\draw (\x,-2pt) -- (\x,2pt);
+\fi
+}
+\foreach \px/\lettre in {#3}{
+\filldraw (\px,0) circle (2pt);
+\node[above] at (\px,4pt) {\lettre};
+}
+\end{tikzpicture}%
+}
+
+\begin{document}
+
+\phantom{0}
+\vspace{-.5cm}
+
+\entetedevoirs{20}
+
+\begin{center}
+\duree{30 minutes}
+\total{20 points}
+\soin
+\end{center}
+
+\begin{exercicedevoir}[2,5][Placer des demis]
+Place les points suivants sur la droite graduée : $A = \dfrac{1}{2}$ ; $B = \dfrac{5}{2}$ ; $C = 3$ ; $D = \dfrac{7}{2}$ ; $E = \dfrac{3}{2}$.
+\begin{center}
+\droitevide{4}{2}
+\end{center}
+\end{exercicedevoir}
+
+\begin{exercicedevoir}[2,5][Placer des tiers]
+Place les points suivants sur la droite graduée : $A = \dfrac{4}{3}$ ; $B = 2$ ; $C = \dfrac{8}{3}$ ; $D = \dfrac{5}{3}$ ; $E = \dfrac{11}{3}$.
+\begin{center}
+\droitevide{4}{3}
+\end{center}
+\end{exercicedevoir}
+
+\begin{exercicedevoir}[2,5][Placer des quarts]
+Place les points suivants sur la droite graduée : $A = \dfrac{3}{4}$ ; $B = \dfrac{9}{4}$ ; $C = 3$ ; $D = \dfrac{13}{4}$ ; $E = \dfrac{7}{4}$.
+\begin{center}
+\droitevide{4}{4}
+\end{center}
+\end{exercicedevoir}
+
+\begin{exercicedevoir}[2,5][Placer des sixièmes]
+Place les points suivants sur la droite graduée : $A = \dfrac{5}{6}$ ; $B = \dfrac{8}{6}$ ; $C = 2$ ; $D = \dfrac{13}{6}$ ; $E = \dfrac{16}{6}$.
+\begin{center}
+\droitevide{3}{6}
+\end{center}
+\end{exercicedevoir}
+
+\newpage
+\phantom{0}
+
+\begin{exercicedevoir}[2,5][Lire des demis]
+Lis l'abscisse de chaque point, puis complète.
+\begin{center}
+\droitepoints{5}{2}{3.5/A,0.5/B,4.5/C,1.5/D,2.5/E}
+\end{center}
+$A = \dotfill$ \quad $B = \dotfill$ \quad $C = \dotfill$ \quad $D = \dotfill$ \quad $E = \dotfill$
+\end{exercicedevoir}
+
+\begin{exercicedevoir}[2,5][Lire des tiers]
+Lis l'abscisse de chaque point, puis complète.
+\begin{center}
+\droitepoints{5}{3}{1.667/A,4.667/B,0.333/C,3/D,3.667/E}
+\end{center}
+$A = \dotfill$ \quad $B = \dotfill$ \quad $C = \dotfill$ \quad $D = \dotfill$ \quad $E = \dotfill$
+\end{exercicedevoir}
+
+\begin{exercicedevoir}[2,5][Lire des quarts]
+Lis l'abscisse de chaque point, puis complète.
+\begin{center}
+\droitepoints{5}{4}{1.75/A,3.75/B,0.75/C,4.75/D,2.75/E}
+\end{center}
+$A = \dotfill$ \quad $B = \dotfill$ \quad $C = \dotfill$ \quad $D = \dotfill$ \quad $E = \dotfill$
+\end{exercicedevoir}
+
+\begin{exercicedevoir}[2,5][Lire des sixièmes]
+Lis l'abscisse de chaque point, puis complète.
+\begin{center}
+\droitepoints{4}{6}{2.833/A,0.5/B,2/C,3.667/D,1.333/E}
+\end{center}
+$A = \dotfill$ \quad $B = \dotfill$ \quad $C = \dotfill$ \quad $D = \dotfill$ \quad $E = \dotfill$
+\end{exercicedevoir}
+
+\end{document}
