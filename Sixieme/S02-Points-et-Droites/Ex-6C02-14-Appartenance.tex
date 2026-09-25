@@ -1,0 +1,172 @@
+%% Font size %%
+\documentclass[11pt]{article}
+
+%% Load the custom package
+\usepackage{Mathdoc}
+\usetikzlibrary{calc}
+
+%% Numéro de séquence %% Titre de la séquence %%
+\renewcommand{\centerhead}{Appartenance d'un point}
+
+\setlength{\parindent}{0pt}
+
+% Corrigé : la feuille est écrite une seule fois (\feuille) puis imprimée
+% deux fois, sans puis avec les réponses en rouge.
+\newif\ifcorrige
+% Réponse dans un $...$ : \app{\in} ou \app{\notin}
+\newcommand{\app}[1]{\ifcorrige\mathrel{\textcolor{red}{#1}}\else\ldots\ldots\ldots\fi}
+% Case du tableau de l'exercice 2
+\newcommand{\cas}[1]{\ifcorrige\textcolor{red}{$#1$}\fi}
+
+\newcommand{\feuille}{%
+\textbf{Exercice 1 : Droites, demi-droites et segments} \\
+Complète avec $\in$ ou $\notin$.
+
+\medskip
+\renewcommand{\arraystretch}{1.7}
+\begin{minipage}[t]{0.32\textwidth}
+\centering
+\begin{tikzpicture}
+  % Droite (AB), points dans l'ordre E, A, M, B, F
+  \coordinate (A) at (1.6,0.6);
+  \coordinate (B) at (3.6,1.3);
+  \coordinate (E) at ($(A)!-0.5!(B)$);
+  \coordinate (M) at ($(A)!0.45!(B)$);
+  \coordinate (F) at ($(A)!1.55!(B)$);
+  \coordinate (G) at (2.1,2.0);
+  \draw[thick] ($(A)!-0.8!(B)$) -- ($(A)!1.8!(B)$);
+  \tkzDrawPoints[shape=cross out,size=9](A,B,E,M,F,G)
+  \tkzLabelPoints[below right=1mm](A,B,E,M,F)
+  \tkzLabelPoints[above=1.5mm](G)
+\end{tikzpicture}
+
+\textbf{Figure 1}
+
+\begin{tabular}{ll}
+$M \app{\in} (AB)$     & $E \app{\in} [BA)$ \\
+$M \app{\in} [AB]$     & $F \app{\in} [AB)$ \\
+$E \app{\notin} [AB]$  & $F \app{\notin} [AB]$ \\
+$E \app{\notin} [AB)$  & $A \app{\notin} [MB)$ \\
+$G \app{\notin} (AB)$  & $E \app{\in} [MA)$ \\
+\end{tabular}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\textwidth}
+\centering
+\begin{tikzpicture}
+  % Demi-droite [RS), T aligné mais avant R
+  \coordinate (R) at (1.2,0.8);
+  \coordinate (S) at (3.0,1.4);
+  \coordinate (T) at ($(R)!-0.6!(S)$);
+  \coordinate (U) at ($(R)!0.5!(S)$);
+  \coordinate (V) at ($(R)!1.6!(S)$);
+  \coordinate (W) at (2.5,2.3);
+  \draw[thick] (R) -- ($(R)!2.3!(S)$);
+  \tkzDrawPoints[shape=cross out,size=9](R,S,T,U,V,W)
+  \tkzLabelPoints[below right=1mm](R,S,T,U,V)
+  \tkzLabelPoints[above=1.5mm](W)
+\end{tikzpicture}
+
+\textbf{Figure 2}
+
+\begin{tabular}{ll}
+$U \app{\in} [RS)$     & $T \app{\in} (RS)$ \\
+$V \app{\in} [RS)$     & $T \app{\in} [SR)$ \\
+$V \app{\notin} [RS]$  & $W \app{\notin} (RS)$ \\
+$T \app{\notin} [RS)$  & $U \app{\in} [SR)$ \\
+$S \app{\in} [RS]$     & $R \app{\in} [SR)$ \\
+\end{tabular}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\textwidth}
+\centering
+\begin{tikzpicture}
+  % Segment [IJ], Z aligné mais après J
+  \coordinate (I) at (0.3,2.0);
+  \coordinate (J) at (2.5,1.0);
+  \coordinate (N) at ($(I)!0.55!(J)$);
+  \coordinate (Z) at ($(I)!1.6!(J)$);
+  \coordinate (Y) at (2.2,2.4);
+  \draw[thick] (I) -- (J);
+  \tkzDrawPoints[shape=cross out,size=9](I,J,N,Z,Y)
+  \tkzLabelPoints[below left=1mm](I,J,N,Z)
+  \tkzLabelPoints[above=1.5mm](Y)
+\end{tikzpicture}
+
+\textbf{Figure 3}
+
+\begin{tabular}{ll}
+$N \app{\in} [IJ]$     & $Z \app{\notin} [JI)$ \\
+$Z \app{\notin} [IJ]$  & $N \app{\in} [JI)$ \\
+$Z \app{\in} (IJ)$     & $Y \app{\notin} (IJ)$ \\
+$Z \app{\in} [IJ)$     & $I \app{\in} [JI)$ \\
+$J \app{\in} [IJ]$     & $Z \app{\in} [NJ)$ \\
+\end{tabular}
+\end{minipage}
+
+\medskip
+Sur la figure 2, le point $T$ n'est pas sur le tracé. Nomme une droite et une demi-droite auxquelles il appartient. \\
+\ifcorrige\textcolor{red}{$T \in (RS)$ et $T \in [SR)$ (ou $[UR)$, $[VR)$\ldots)}\else\mbox{}\dotfill\fi
+
+\vspace{0.8cm}
+\textbf{Exercice 2 : Points et figures} \\
+Complète le tableau avec $\in$ ou $\notin$. Un point appartient à une figure lorsqu'il est placé \emph{sur son tracé}.
+
+\begin{center}
+\begin{tikzpicture}
+  % Triangle KLM, B sur [LM]
+  \coordinate (K) at (0,0);
+  \coordinate (L) at (3.5,0.3);
+  \coordinate (M) at (1.2,3.5);
+  \coordinate (B) at ($(L)!0.45!(M)$);
+  \draw[thick] (K) -- (L) -- (M) -- cycle;
+
+  % Carré RSTU, E à l'intérieur
+  \coordinate (R) at (5,0);
+  \coordinate (S) at (8,0);
+  \coordinate (T) at (8,3);
+  \coordinate (U) at (5,3);
+  \coordinate (E) at (6.3,1.6);
+  \draw[thick] (R) -- (S) -- (T) -- (U) -- cycle;
+
+  % Cercle de centre O, rayon 2,5 : coupe [ST] en D (8 ; 2,2)
+  \coordinate (O) at (10.4,1.5);
+  \coordinate (A) at ($(O)+(60:2.5)$);
+  \coordinate (C) at (11.3,2.4);
+  \coordinate (D) at (8,2.2);
+  \draw[thick] (O) circle (2.5);
+  \node at ($(O)+(-40:2.95)$) {$\mathscr{C}$};
+
+  \tkzDrawPoints[shape=cross out,size=9](K,L,M,R,S,T,U,O,A,B,C,D,E)
+  \tkzLabelPoints[below left=0.5mm](K,R)
+  \tkzLabelPoints[below right=0.5mm](L,S,O)
+  \tkzLabelPoints[right=1mm](C)
+  \tkzLabelPoints[above=1mm](M,U,E)
+  \tkzLabelPoints[above left=0.5mm](T,D)
+  \tkzLabelPoints[above right=0.5mm](A,B)
+\end{tikzpicture}
+\end{center}
+
+\renewcommand{\arraystretch}{2.2}
+\begin{tabularx}{\textwidth}{|l|*{6}{>{\centering\arraybackslash}X|}}
+\hline
+                      & $A$ & $B$ & $C$ & $D$ & $E$ & $O$ \\ \hline
+Triangle $KLM$        & \cas{\notin} & \cas{\in}    & \cas{\notin} & \cas{\notin} & \cas{\notin} & \cas{\notin} \\ \hline
+Carré $RSTU$          & \cas{\notin} & \cas{\notin} & \cas{\notin} & \cas{\in}    & \cas{\notin} & \cas{\notin} \\ \hline
+Cercle $\mathscr{C}$  & \cas{\in}    & \cas{\notin} & \cas{\notin} & \cas{\in}    & \cas{\notin} & \cas{\notin} \\ \hline
+\end{tabularx}
+}
+
+\begin{document}
+
+\corrigefalse
+\feuille
+
+\newpage
+\corrigetrue
+\feuille
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% End:
