@@ -1,0 +1,138 @@
+%% Font size %%
+\documentclass[11pt]{article}
+
+%% Load the custom package
+\usepackage{Mathdoc}
+
+%% Numéro de séquence %% Titre de la séquence %%
+\renewcommand{\centerhead}{S03 - Éval : Fractions égales}
+
+%% Spacing commands %%
+\renewcommand{\baselinestretch}{1} \setlength{\parindent}{0pt}
+
+% ------------------------------------------------------------------
+% POUR LE CORRIGÉ : remplacer \corrigefalse par \corrigetrue
+% (dans \begin{document} ci-dessous), puis recompiler.
+% La feuille est écrite une seule fois (\feuille) ; les réponses
+% s'affichent en rouge à la place des pointillés, sans changer la mise en page.
+% Dans chaque exercice, le premier item (Exemple) est déjà fait, en noir.
+% ------------------------------------------------------------------
+\newif\ifcorrige
+
+% Réponse courte : pointillés de largeur #1 (sujet) ou réponse #2 en rouge (corrigé)
+\newcommand{\rep}[2][1cm]{\makebox[#1]{\vphantom{0}\ifcorrige\textcolor{red}{#2}\else\dotfill\fi}}
+% Oui / non : la bonne réponse est entourée en rouge dans le corrigé
+\newcommand{\entoure}[1]{\tikz[baseline=(t.base)]{\node[inner sep=2pt,draw=\ifcorrige red\else white\fi,rounded corners=6pt] (t) {#1};}}
+% Mot jamais entouré, mais avec le même encombrement (colonnes alignées)
+\newcommand{\pasentoure}[1]{\tikz[baseline=(t.base)]{\node[inner sep=2pt,draw=white,rounded corners=6pt] (t) {#1};}}
+% Mot entouré en noir (item exemple, visible dans le sujet)
+\newcommand{\entourenoir}[1]{\tikz[baseline=(t.base)]{\node[inner sep=2pt,draw=black,rounded corners=6pt] (t) {#1};}}
+\newcommand{\oui}{\entoure{oui}\quad\pasentoure{non}}
+\newcommand{\non}{\pasentoure{oui}\quad\entoure{non}}
+
+% Bande de longueur \bandel cm partagée en #1 parts, les #2 premières coloriées
+\newcommand{\bandel}{4.8}
+\newcommand{\bande}[2]{%
+\begin{tikzpicture}[baseline=0.15cm]
+\fill[gray!45] (0,0) rectangle ({\bandel*#2/#1},0.5);
+\foreach \i in {1,...,\numexpr#1-1\relax}{\draw ({\bandel*\i/#1},0) -- ({\bandel*\i/#1},0.5);}
+\draw[thick] (0,0) rectangle (\bandel,0.5);
+\end{tikzpicture}}
+
+% Paire de bandes (#1 parts, #2 coloriées) et (#3 parts, #4 coloriées), l'une sous l'autre
+\newcommand{\paire}[4]{\begin{tabular}[c]{@{}l@{}}\bande{#1}{#2}\\[1mm]\bande{#3}{#4}\end{tabular}}
+
+% Fraction à écrire : numérateur #1, dénominateur #2 (pointillés dans le sujet)
+\newcommand{\frep}[2]{\dfrac{\rep[0.8cm]{#1}}{\rep[0.8cm]{#2}}}
+
+\newcommand{\feuille}{%
+\phantom{0}
+\vspace{-.5cm}
+
+\entetedevoirs{20}
+
+\vspace{-0.2cm}
+\begin{minipage}[c]{0.41\linewidth}
+\centering
+\duree{20 minutes}
+\total{20 points}
+\calculatrice{0}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.57\linewidth}
+\fbox{\parbox{0.96\linewidth}{\centering
+\textbf{À retenir :} on multiplie (ou on divise) le haut \textbf{ET} le bas
+par le \textbf{même nombre} : la fraction reste égale.}}
+\end{minipage}
+
+\vspace{-0.2cm}
+\begin{exercicedevoir}[5][Des bandes coloriées]
+Les bandes ont toutes la même longueur. Écris les deux fractions coloriées, puis l'égalité.
+
+\medskip
+\renewcommand{\arraystretch}{1}
+\begin{tabular}{@{}l@{\ }c@{\ \ }l@{\hspace{8mm}}l@{\ }c@{\ \ }l@{}}
+\textbf{Exemple :} & \paire{2}{1}{6}{3} & $\dfrac{1}{2} = \dfrac{3}{6}$ &
+\textbf{a.} & \paire{3}{2}{6}{4} & $\frep{2}{3} = \frep{4}{6}$ \\[7mm]
+\textbf{b.} & \paire{4}{1}{8}{2} & $\frep{1}{4} = \frep{2}{8}$ &
+\textbf{c.} & \paire{5}{1}{10}{2} & $\frep{1}{5} = \frep{2}{10}$ \\
+\end{tabular}
+\end{exercicedevoir}
+
+\vspace{-1.0cm}
+\begin{exercicedevoir}[5][Compléter avec le nombre donné]
+Complète.
+
+\renewcommand{\arraystretch}{2.25}
+\begin{tabularx}{\linewidth}{@{}XXX@{}}
+\textbf{Exemple :} $\dfrac{2}{7} = \dfrac{2 \times 2}{7 \times 2} = \dfrac{4}{14}$ &
+\textbf{a.} $\dfrac{2}{5} = \dfrac{2 \times 2}{5 \times 2} = \frep{4}{10}$ &
+\textbf{b.} $\dfrac{4}{7} = \dfrac{4 \times 3}{7 \times 3} = \frep{12}{21}$ \\
+\textbf{c.} $\dfrac{3}{10} = \dfrac{3 \times 10}{10 \times 10} = \frep{30}{100}$ &
+\textbf{d.} $\dfrac{8}{10} = \dfrac{8 \div 2}{10 \div 2} = \frep{4}{5}$ &
+\textbf{e.} $\dfrac{15}{20} = \dfrac{15 \div 5}{20 \div 5} = \frep{3}{4}$ \\
+\end{tabularx}
+\end{exercicedevoir}
+
+\vspace{-1.0cm}
+\begin{exercicedevoir}[5][Trouver le nombre manquant]
+Complète la fraction, puis écris par combien on multiplie en haut et en bas.
+
+\renewcommand{\arraystretch}{2.25}
+\begin{tabularx}{\linewidth}{@{}XXX@{}}
+\textbf{Exemple :} $\dfrac{1}{3} = \dfrac{2}{6}$ \quad on fait $\times\,2$ &
+\textbf{a.} $\dfrac{2}{5} = \dfrac{\rep[0.8cm]{6}}{15}$ \quad on fait $\times$\,\rep[0.8cm]{3} &
+\textbf{b.} $\dfrac{3}{4} = \dfrac{12}{\rep[0.8cm]{16}}$ \quad on fait $\times$\,\rep[0.8cm]{4} \\
+\textbf{c.} $\dfrac{1}{2} = \dfrac{\rep[0.8cm]{5}}{10}$ \quad on fait $\times$\,\rep[0.8cm]{5} &
+\textbf{d.} $\dfrac{7}{10} = \dfrac{\rep[0.8cm]{70}}{100}$ \quad on fait $\times$\,\rep[0.8cm]{10} &
+\textbf{e.} $\dfrac{5}{6} = \dfrac{10}{\rep[0.8cm]{12}}$ \quad on fait $\times$\,\rep[0.8cm]{2} \\
+\end{tabularx}
+\end{exercicedevoir}
+
+\vspace{-1.0cm}
+\begin{exercicedevoir}[5][Égales ou pas ?]
+Complète : par combien multiplie-t-on en haut ? en bas ? Si c'est le \textbf{même nombre}, les deux fractions sont égales :
+entoure \textit{oui}. Sinon, entoure \textit{non}.
+
+\renewcommand{\arraystretch}{2.5}
+\begin{tabular}{@{}l@{\hspace{5mm}}l@{\hspace{5mm}}l@{\hspace{12mm}}l@{\hspace{5mm}}l@{\hspace{5mm}}l@{}}
+\textbf{Exemple :} $\dfrac{2}{3}$ et $\dfrac{8}{12}$ & $\dfrac{2 \times 4}{3 \times 4} = \dfrac{8}{12}$ & \entourenoir{oui}\quad\pasentoure{non} &
+\textbf{a.} $\dfrac{1}{5}$ et $\dfrac{3}{15}$ & $\dfrac{1 \times \rep[0.7cm]{3}}{5 \times \rep[0.7cm]{3}} = \dfrac{3}{15}$ & \oui \\
+\textbf{b.} $\dfrac{3}{5}$ et $\dfrac{6}{10}$ & $\dfrac{3 \times \rep[0.7cm]{2}}{5 \times \rep[0.7cm]{2}} = \dfrac{6}{10}$ & \oui & \textbf{c.} $\dfrac{3}{4}$ et $\dfrac{6}{12}$ & $\dfrac{3 \times \rep[0.7cm]{2}}{4 \times \rep[0.7cm]{3}} = \dfrac{6}{12}$ & \non \\
+\textbf{d.} $\dfrac{4}{5}$ et $\dfrac{40}{50}$ & $\dfrac{4 \times \rep[0.7cm]{10}}{5 \times \rep[0.7cm]{10}} = \dfrac{40}{50}$ & \oui & \textbf{e.} $\dfrac{5}{6}$ et $\dfrac{25}{30}$ & $\dfrac{5 \times \rep[0.7cm]{5}}{6 \times \rep[0.7cm]{5}} = \dfrac{25}{30}$ & \oui \\
+\end{tabular}
+\end{exercicedevoir}
+\vspace{-0.9cm}
+{\small\hspace*{-4pt}\competences{6C03-NUM07 & Reconnaître des fractions égales & & & & \\ \hline}}
+}
+
+\begin{document}
+
+\corrigefalse
+\feuille
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% End:

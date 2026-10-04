@@ -1,0 +1,138 @@
+%% POUR LE CORRIGÉ : remplacer \corrigefalse par \corrigetrue (dans \begin{document}).
+%% Avec \corrigefalse, on obtient le sujet seul (1 page) ; avec \corrigetrue,
+%% la même page avec les réponses en rouge.
+
+%% Font size %%
+\documentclass[11pt]{article}
+
+%% Load the custom package
+\usepackage{Mathdoc}
+
+%% Numéro de séquence %% Titre de la séquence %%
+\renewcommand{\centerhead}{S03 - Éval : Simplifier une fraction}
+
+%% Spacing commands %%
+\renewcommand{\baselinestretch}{1} \setlength{\parindent}{0pt}
+
+% Corrigé : la feuille est écrite une seule fois (\feuille).
+\newif\ifcorrige
+% Nombre-réponse (en mode math) : pointillés dans le sujet, réponse en rouge dans le corrigé
+% \nb[largeur]{réponse}
+\newcommand{\nb}[2][0.9cm]{\makebox[#1]{$\vphantom{0}$\ifcorrige$\textcolor{red}{#2}$\else\dotfill\fi}}
+% Fraction-réponse : \fr{num}{den}
+\newcommand{\fr}[2]{\dfrac{\nb{#1}}{\nb{#2}}}
+% oui / non : la bonne réponse est entourée en rouge dans le corrigé (même encombrement dans le sujet)
+\newcommand{\ent}[1]{\tikz[baseline=(t.base)]{\node[inner sep=2pt,draw=\ifcorrige red\else white\fi,rounded corners=6pt] (t) {#1};}}
+\newcommand{\pasent}[1]{\tikz[baseline=(t.base)]{\node[inner sep=2pt,draw=white,rounded corners=6pt] (t) {#1};}}
+\newcommand{\oui}{\ent{oui}\,/\,\pasent{non}}
+\newcommand{\non}{\pasent{oui}\,/\,\ent{non}}
+% oui / non déjà entouré (exemple fait, en noir)
+\newcommand{\ouiex}{\tikz[baseline=(t.base)]{\node[inner sep=2pt,draw,rounded corners=6pt] (t) {oui};}\,/\,\pasent{non}}
+
+\newcommand{\feuille}{%
+\phantom{0}
+\vspace{-.5cm}
+
+\entetedevoirs{20}
+
+\begin{center}
+\duree{20 minutes}
+\total{20 points}
+\calculatrice{0}
+\end{center}
+
+\vspace{-0.3cm}
+\begin{center}
+\fbox{\parbox{0.9\linewidth}{\centering
+\textbf{Rappel :} simplifier, c'est \textbf{diviser} le nombre du haut \textbf{et} le nombre du bas par le \textbf{même nombre}.}}
+\end{center}
+
+\vspace{-0.6cm}
+\begin{exercicedevoir}[5][Simplifie par 2]
+\vspace{-0.3cm}
+Complète comme dans l'exemple.
+
+\renewcommand{\arraystretch}{2.75}
+\begin{tabularx}{\textwidth}{@{}XXX@{}}
+\textit{Exemple :} $\dfrac{8}{10} = \dfrac{8 \div 2}{10 \div 2} = \dfrac{4}{5}$ &
+a) $\dfrac{8}{14} = \dfrac{8 \div 2}{14 \div 2} = \fr{4}{7}$ &
+b) $\dfrac{10}{12} = \dfrac{10 \div 2}{12 \div 2} = \fr{5}{6}$ \\
+c) $\dfrac{4}{18} = \dfrac{4 \div 2}{18 \div 2} = \fr{2}{9}$ &
+d) $\dfrac{6}{14} = \dfrac{6 \div 2}{14 \div 2} = \fr{3}{7}$ &
+e) $\dfrac{12}{14} = \dfrac{12 \div 2}{14 \div 2} = \fr{6}{7}$ \\
+\end{tabularx}
+\end{exercicedevoir}
+
+\vspace{-1.1cm}
+\begin{exercicedevoir}[5][Simplifie par le nombre indiqué]
+\vspace{-0.3cm}
+Complète comme dans l'exemple.
+
+\renewcommand{\arraystretch}{2.75}
+\begin{tabularx}{\textwidth}{@{}XXX@{}}
+\textit{Exemple}, par $3$ : $\dfrac{9}{12} = \dfrac{9 \div 3}{12 \div 3} = \dfrac{3}{4}$ &
+a) Par $3$ : $\dfrac{6}{15} = \dfrac{6 \div \nb[0.65cm]{3}}{15 \div \nb[0.65cm]{3}} = \fr{2}{5}$ &
+b) Par $5$ : $\dfrac{10}{35} = \dfrac{10 \div \nb[0.65cm]{5}}{35 \div \nb[0.65cm]{5}} = \fr{2}{7}$ \\
+c) Par $10$ : $\dfrac{30}{70} = \dfrac{30 \div \nb[0.65cm]{10}}{70 \div \nb[0.65cm]{10}} = \fr{3}{7}$ &
+d) Par $3$ : $\dfrac{15}{21} = \dfrac{15 \div \nb[0.65cm]{3}}{21 \div \nb[0.65cm]{3}} = \fr{5}{7}$ &
+e) Par $5$ : $\dfrac{20}{45} = \dfrac{20 \div \nb[0.65cm]{5}}{45 \div \nb[0.65cm]{5}} = \fr{4}{9}$ \\
+\end{tabularx}
+\end{exercicedevoir}
+
+\vspace{-1.1cm}
+\begin{exercicedevoir}[5][Trouve le nombre, puis simplifie]
+\vspace{-0.3cm}
+Trouve le nombre ($2$, $3$, $5$ ou $10$) qui divise le haut et le bas, puis simplifie.
+
+\renewcommand{\arraystretch}{2.75}
+\begin{tabularx}{\textwidth}{@{}XXX@{}}
+\textit{Exemple}, par $3$ : $\dfrac{9}{21} = \dfrac{9 \div 3}{21 \div 3} = \dfrac{3}{7}$ &
+a) Par \nb[0.65cm]{2} : $\dfrac{8}{18} = \dfrac{8 \div \nb[0.65cm]{2}}{18 \div \nb[0.65cm]{2}} = \fr{4}{9}$ &
+b) Par \nb[0.65cm]{5} : $\dfrac{15}{25} = \dfrac{15 \div \nb[0.65cm]{5}}{25 \div \nb[0.65cm]{5}} = \fr{3}{5}$ \\
+c) Par \nb[0.65cm]{3} : $\dfrac{12}{21} = \dfrac{12 \div \nb[0.65cm]{3}}{21 \div \nb[0.65cm]{3}} = \fr{4}{7}$ &
+d) Par \nb[0.65cm]{2} : $\dfrac{16}{18} = \dfrac{16 \div \nb[0.65cm]{2}}{18 \div \nb[0.65cm]{2}} = \fr{8}{9}$ &
+e) Par \nb[0.65cm]{3} : $\dfrac{12}{15} = \dfrac{12 \div \nb[0.65cm]{3}}{15 \div \nb[0.65cm]{3}} = \fr{4}{5}$ \\
+\end{tabularx}
+\end{exercicedevoir}
+
+\vspace{-1.1cm}
+\begin{exercicedevoir}[5][Simplifie encore !]
+\vspace{-0.3cm}
+\textbf{1.} Divise par 2, puis encore par 2, comme dans l'exemple.
+
+\renewcommand{\arraystretch}{2.75}
+\begin{tabularx}{\textwidth}{@{}XX@{}}
+\textit{Exemple :} $\dfrac{20}{32} = \dfrac{20 \div 2}{32 \div 2} = \dfrac{10}{16} = \dfrac{10 \div 2}{16 \div 2} = \dfrac{5}{8}$ &
+a) $\dfrac{4}{12} = \dfrac{4 \div 2}{12 \div 2} = \fr{2}{6} = \dfrac{\nb{2} \div 2}{\nb{6} \div 2} = \fr{1}{3}$ \\
+b) $\dfrac{20}{28} = \dfrac{20 \div 2}{28 \div 2} = \fr{10}{14} = \dfrac{\nb{10} \div 2}{\nb{14} \div 2} = \fr{5}{7}$ &
+c) $\dfrac{12}{20} = \dfrac{12 \div 2}{20 \div 2} = \fr{6}{10} = \dfrac{\nb{6} \div 2}{\nb{10} \div 2} = \fr{3}{5}$ \\
+\end{tabularx}
+
+\smallskip
+\textbf{2.} Peut-on encore simplifier ? Entoure \textbf{oui} ou \textbf{non}.
+
+\smallskip
+\begin{tabularx}{\textwidth}{@{}XXX@{}}
+\textit{Exemple :} $\dfrac{4}{10}$ \enskip \ouiex &
+a) $\dfrac{3}{7}$ \enskip \non &
+b) $\dfrac{10}{25}$ \enskip \oui \\
+\end{tabularx}
+\end{exercicedevoir}
+
+\vspace{-0.6cm}
+{\small\competences{
+6C03-NUM08 & Simplifier une fraction & & & & \\ \hline
+}}
+}
+
+\begin{document}
+
+\corrigefalse
+\feuille
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% End:

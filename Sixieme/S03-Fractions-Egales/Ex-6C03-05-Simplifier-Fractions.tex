@@ -1,0 +1,117 @@
+%% Font size %%
+\documentclass[11pt]{article}
+
+%% Load the custom package
+\usepackage{Mathdoc}
+
+%% Numéro de séquence %% Titre de la séquence %%
+\renewcommand{\centerhead}{S03 - Simplifier une fraction}
+
+%% Spacing commands %%
+\renewcommand{\baselinestretch}{1} \setlength{\parindent}{0pt}
+
+% Corrigé : la feuille est écrite une seule fois (\feuille) puis imprimée
+% deux fois, sans puis avec les réponses en rouge.
+\newif\ifcorrige
+% Réponse dans une case de largeur fixe : \rep[largeur]{réponse}
+% (pointillés sur le sujet, réponse en rouge sur le corrigé, même place)
+\newcommand{\rep}[2][0.8cm]{\makebox[#1]{\ifcorrige\textcolor{red}{$#2$}\else\dotfill\fi}}
+% Mot à entourer dans le corrigé : \entoure{mot}
+\newcommand{\entoure}[2][]{\def\coulcadre{white}\ifcorrige\if r#1\def\coulcadre{red}\fi\fi\tikz[baseline=(m.base)]\node[draw=\coulcadre,thick,rounded corners=2mm,inner sep=2pt](m){#2};}
+% Simplification guidée par un facteur : \simp{a}{b}{k}{a/k}{b/k}
+\newcommand{\simp}[5]{$\dfrac{#1}{#2}=\dfrac{#1 \div #3}{#2 \div #3}=\dfrac{\rep{#4}}{\rep{#5}}$}
+% Même chose, facteur à trouver
+\newcommand{\simpt}[5]{$\dfrac{#1}{#2}=\dfrac{#1 \div \rep[0.6cm]{#3}}{#2 \div \rep[0.6cm]{#3}}=\dfrac{\rep{#4}}{\rep{#5}}$}
+
+% Simplification en deux étapes par 2 : \simpd{a}{b}{a/2}{b/2}{a/4}{b/4}
+\newcommand{\simpd}[6]{$\dfrac{#1}{#2}=\dfrac{#1 \div 2}{#2 \div 2}=\dfrac{\rep{#3}}{\rep{#4}}=\dfrac{\rep{#3} \div 2}{\rep{#4} \div 2}=\dfrac{\rep{#5}}{\rep{#6}}$}
+% Item déjà fait (exemple) : fond grisé
+\newcommand{\fait}[1]{\colorbox{gray!15}{#1}}
+\newcommand{\marqueex}{\colorbox{gray!15}{\strut\ }}
+\newcommand{\feuille}{%
+\setcounter{exercice}{0}
+
+\begin{tcolorbox}[width=\linewidth-1cm,colback=white,colframe=black,boxrule=0.6pt,arc=2mm,left=2mm,right=2mm,top=0.5mm,bottom=0.5mm]
+\textbf{Rappel :} Simplifier, c'est \textbf{diviser} le nombre du haut \textbf{et} le nombre du bas\newline
+par le \textbf{même nombre}, pour avoir des nombres plus petits.
+\hfill $\dfrac{6}{8}=\dfrac{6 \div 2}{8 \div 2}=\dfrac{3}{4}$\hspace*{1cm}
+\end{tcolorbox}
+\vspace{-1.5em}
+\begin{exercice}[1][Simplifie par 2]
+Complète en divisant le haut et le bas par $2$. \hfill \marqueex\ = exemple
+
+\renewcommand{\arraystretch}{2.35}
+\begin{tabularx}{\linewidth}{@{}XXX@{}}
+\fait{a. \ $\dfrac{4}{6}=\dfrac{4 \div 2}{6 \div 2}=\dfrac{2}{3}$} &
+b. \ \simp{10}{14}{2}{5}{7} &
+c. \ \simp{6}{10}{2}{3}{5} \\
+d. \ \simp{2}{8}{2}{1}{4} &
+e. \ \simp{18}{20}{2}{9}{10} &
+f. \ \simp{14}{18}{2}{7}{9} \\
+\end{tabularx}
+\end{exercice}
+
+\vspace{-1.2em}
+\begin{exercice}[1][Simplifie par le nombre indiqué]
+Complète en divisant le haut et le bas par le nombre indiqué. \hfill \marqueex\ = exemple
+
+\renewcommand{\arraystretch}{2.35}
+\begin{tabularx}{\linewidth}{@{}XXX@{}}
+\fait{a. Par $3$ : \ $\dfrac{9}{15}=\dfrac{9 \div 3}{15 \div 3}=\dfrac{3}{5}$} &
+b. Par $5$ : \ \simp{10}{15}{5}{2}{3} &
+c. Par $10$ : \ \simp{30}{40}{10}{3}{4} \\
+d. Par $3$ : \ \simp{6}{21}{3}{2}{7} &
+e. Par $5$ : \ \simp{15}{35}{5}{3}{7} &
+f. Par $10$ : \ \simp{70}{90}{10}{7}{9} \\
+\end{tabularx}
+\end{exercice}
+
+\vspace{-1.2em}
+\begin{exercice}[2][Trouve le nombre, puis simplifie]
+Le haut et le bas sont dans la même table : de $2$, $3$, $5$ ou $10$ ? Écris-la, puis simplifie. \hfill \marqueex\ = exemple
+
+\renewcommand{\arraystretch}{2.35}
+\begin{tabularx}{\linewidth}{@{}XX@{}}
+\fait{a. Table de $5$ : \ $\dfrac{15}{20}=\dfrac{15 \div 5}{20 \div 5}=\dfrac{3}{4}$} &
+b. Table de \rep[0.6cm]{3} : \ \simpt{6}{9}{3}{2}{3} \\
+c. Table de \rep[0.6cm]{2} : \ \simpt{14}{16}{2}{7}{8} &
+d. Table de \rep[0.6cm]{5} : \ \simpt{25}{45}{5}{5}{9} \\
+e. Table de \rep[0.6cm]{3} : \ \simpt{21}{24}{3}{7}{8} &
+f. Table de \rep[0.6cm]{5} : \ \simpt{35}{40}{5}{7}{8} \\
+\end{tabularx}
+\end{exercice}
+
+\vspace{-1.2em}
+\begin{exercice}[3][Simplifie encore]
+Divise par $2$, puis encore par $2$. \hfill \marqueex\ = exemple
+
+\renewcommand{\arraystretch}{2.6}
+\begin{tabularx}{\linewidth}{@{}XX@{}}
+\fait{a. \ $\dfrac{12}{16}=\dfrac{12 \div 2}{16 \div 2}=\dfrac{6}{8}=\dfrac{6 \div 2}{8 \div 2}=\dfrac{3}{4}$} &
+b. \ \simpd{8}{12}{4}{6}{2}{3} \\
+c. \ \simpd{20}{24}{10}{12}{5}{6} &
+d. \ \simpd{4}{8}{2}{4}{1}{2} \\
+e. \ \simpd{28}{40}{14}{20}{7}{10} &
+f. \ \simpd{16}{20}{8}{10}{4}{5} \\
+\end{tabularx}
+
+\smallskip
+g. Peut-on encore simplifier $\dfrac{3}{4}$ ? \quad Entoure la bonne réponse : \qquad \entoure{oui} \qquad \entoure[r]{non}
+\end{exercice}
+}
+
+\begin{document}
+
+\corrigefalse
+\feuille
+
+\newpage
+\corrigetrue
+\feuille
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% End:
