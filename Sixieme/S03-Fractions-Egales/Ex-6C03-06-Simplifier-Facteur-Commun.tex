@@ -1,0 +1,125 @@
+%% Font size %%
+\documentclass[11pt]{article}
+
+%% Load the custom package
+\usepackage{Mathdoc}
+\usepackage{cancel}
+
+%% Numéro de séquence %% Titre de la séquence %%
+\renewcommand{\centerhead}{S03 - Simplifier en barrant un facteur commun}
+
+%% Spacing commands %%
+\renewcommand{\baselinestretch}{1} \setlength{\parindent}{0pt}
+
+% Corrigé : la feuille est écrite une seule fois (\feuille) puis imprimée
+% deux fois, sans puis avec les réponses en rouge.
+\newif\ifcorrige
+% Réponse dans une case de largeur fixe : \rep[largeur]{réponse}
+% (pointillés sur le sujet, réponse en rouge sur le corrigé, même place)
+\newcommand{\rep}[2][0.8cm]{\makebox[#1]{\ifcorrige\textcolor{red}{$#2$}\else\dotfill\fi}}
+% Facteur commun à barrer : imprimé sur le sujet, barré en rouge sur le corrigé
+\newcommand{\barre}[1]{\ifcorrige{\renewcommand{\CancelColor}{\color{red}}\cancel{#1}}\else #1\fi}
+% Item déjà fait (exemple) : fond grisé
+\newcommand{\fait}[1]{\colorbox{gray!15}{#1}}
+\newcommand{\marqueex}{\colorbox{gray!15}{\strut\ }}
+
+\newcommand{\feuille}{%
+\setcounter{exercice}{0}
+
+\begin{tcolorbox}[width=\linewidth-1cm,colback=white,colframe=black,boxrule=0.6pt,arc=2mm,left=2mm,right=2mm,top=0.5mm,bottom=0.5mm]
+\textbf{Méthode :} on écrit le haut \textbf{et} le bas comme un produit
+avec le \textbf{même facteur},\newline puis on \textbf{barre} ce facteur
+en haut et en bas.
+\hfill $\dfrac{6}{8}=\dfrac{\cancel{2} \times 3}{\cancel{2} \times 4}=\dfrac{3}{4}$\hspace*{1cm}
+\end{tcolorbox}
+\vspace{-1.5em}
+\begin{exercice}[1][Simplifie par 2]
+Complète, puis barre le $2$ en haut et en bas. \hfill \marqueex\ = exemple
+
+\renewcommand{\arraystretch}{2.25}
+\begin{tabularx}{\linewidth}{@{}XXX@{}}
+\fait{a. \ $\dfrac{6}{8}=\dfrac{\cancel{2} \times 3}{\cancel{2} \times 4}=\dfrac{3}{4}$} &
+b. \ $\dfrac{10}{14}=\dfrac{\barre{2} \times \rep{5}}{\barre{2} \times \rep{7}}=\dfrac{\rep{5}}{\rep{7}}$ &
+c. \ $\dfrac{4}{18}=\dfrac{\barre{2} \times \rep{2}}{\barre{2} \times \rep{9}}=\dfrac{\rep{2}}{\rep{9}}$ \\
+d. \ $\dfrac{12}{14}=\dfrac{\barre{2} \times \rep{6}}{\barre{2} \times \rep{7}}=\dfrac{\rep{6}}{\rep{7}}$ &
+e. \ $\dfrac{16}{18}=\dfrac{\barre{2} \times \rep{8}}{\barre{2} \times \rep{9}}=\dfrac{\rep{8}}{\rep{9}}$ &
+f. \ $\dfrac{8}{10}=\dfrac{\barre{2} \times \rep{4}}{\barre{2} \times \rep{5}}=\dfrac{\rep{4}}{\rep{5}}$ \\
+\end{tabularx}
+\end{exercice}
+
+\vspace{-1.2em}
+\begin{exercice}[1][Simplifie par 3]
+Complète, puis barre le $3$ en haut et en bas. \hfill \marqueex\ = exemple
+
+\renewcommand{\arraystretch}{2.25}
+\begin{tabularx}{\linewidth}{@{}XXX@{}}
+\fait{a. \ $\dfrac{9}{15}=\dfrac{\cancel{3} \times 3}{\cancel{3} \times 5}=\dfrac{3}{5}$} &
+b. \ $\dfrac{6}{9}=\dfrac{\barre{3} \times \rep{2}}{\barre{3} \times \rep{3}}=\dfrac{\rep{2}}{\rep{3}}$ &
+c. \ $\dfrac{12}{21}=\dfrac{\barre{3} \times \rep{4}}{\barre{3} \times \rep{7}}=\dfrac{\rep{4}}{\rep{7}}$ \\
+d. \ $\dfrac{15}{24}=\dfrac{\barre{3} \times \rep{5}}{\barre{3} \times \rep{8}}=\dfrac{\rep{5}}{\rep{8}}$ &
+e. \ $\dfrac{3}{12}=\dfrac{\barre{3} \times \rep{1}}{\barre{3} \times \rep{4}}=\dfrac{\rep{1}}{\rep{4}}$ &
+f. \ $\dfrac{21}{24}=\dfrac{\barre{3} \times \rep{7}}{\barre{3} \times \rep{8}}=\dfrac{\rep{7}}{\rep{8}}$ \\
+\end{tabularx}
+\end{exercice}
+
+\vspace{-1.2em}
+\begin{exercice}[1][Simplifie par 5]
+Complète, puis barre le $5$ en haut et en bas. \hfill \marqueex\ = exemple
+
+\renewcommand{\arraystretch}{2.25}
+\begin{tabularx}{\linewidth}{@{}XXX@{}}
+\fait{a. \ $\dfrac{10}{15}=\dfrac{\cancel{5} \times 2}{\cancel{5} \times 3}=\dfrac{2}{3}$} &
+b. \ $\dfrac{15}{20}=\dfrac{\barre{5} \times \rep{3}}{\barre{5} \times \rep{4}}=\dfrac{\rep{3}}{\rep{4}}$ &
+c. \ $\dfrac{25}{35}=\dfrac{\barre{5} \times \rep{5}}{\barre{5} \times \rep{7}}=\dfrac{\rep{5}}{\rep{7}}$ \\
+d. \ $\dfrac{5}{30}=\dfrac{\barre{5} \times \rep{1}}{\barre{5} \times \rep{6}}=\dfrac{\rep{1}}{\rep{6}}$ &
+e. \ $\dfrac{20}{45}=\dfrac{\barre{5} \times \rep{4}}{\barre{5} \times \rep{9}}=\dfrac{\rep{4}}{\rep{9}}$ &
+f. \ $\dfrac{35}{40}=\dfrac{\barre{5} \times \rep{7}}{\barre{5} \times \rep{8}}=\dfrac{\rep{7}}{\rep{8}}$ \\
+\end{tabularx}
+\end{exercice}
+
+\vspace{-1.2em}
+\begin{exercice}[1][Simplifie par 10]
+Complète, puis barre le $10$ en haut et en bas. \hfill \marqueex\ = exemple
+
+\renewcommand{\arraystretch}{2.25}
+\begin{tabularx}{\linewidth}{@{}XXX@{}}
+\fait{a. \ $\dfrac{30}{70}=\dfrac{\cancel{10} \times 3}{\cancel{10} \times 7}=\dfrac{3}{7}$} &
+b. \ $\dfrac{20}{30}=\dfrac{\barre{10} \times \rep{2}}{\barre{10} \times \rep{3}}=\dfrac{\rep{2}}{\rep{3}}$ &
+c. \ $\dfrac{40}{90}=\dfrac{\barre{10} \times \rep{4}}{\barre{10} \times \rep{9}}=\dfrac{\rep{4}}{\rep{9}}$ \\
+d. \ $\dfrac{10}{30}=\dfrac{\barre{10} \times \rep{1}}{\barre{10} \times \rep{3}}=\dfrac{\rep{1}}{\rep{3}}$ &
+e. \ $\dfrac{70}{80}=\dfrac{\barre{10} \times \rep{7}}{\barre{10} \times \rep{8}}=\dfrac{\rep{7}}{\rep{8}}$ &
+f. \ $\dfrac{90}{100}=\dfrac{\barre{10} \times \rep{9}}{\barre{10} \times \rep{10}}=\dfrac{\rep{9}}{\rep{10}}$ \\
+\end{tabularx}
+\end{exercice}
+
+\vspace{-1.2em}
+\begin{exercice}[2][Trouve le facteur commun]
+Par $2$, $3$, $5$ ou $10$ ? Écris les produits, barre, puis simplifie. \hfill \marqueex\ = exemple
+
+\renewcommand{\arraystretch}{2.25}
+\begin{tabularx}{\linewidth}{@{}XXX@{}}
+\fait{a. \ $\dfrac{15}{25}=\dfrac{\cancel{5} \times 3}{\cancel{5} \times 5}=\dfrac{3}{5}$} &
+b. \ $\dfrac{9}{12}=\dfrac{\rep[1.7cm]{\cancel{3} \times 3}}{\rep[1.7cm]{\cancel{3} \times 4}}=\dfrac{\rep{3}}{\rep{4}}$ &
+c. \ $\dfrac{10}{16}=\dfrac{\rep[1.7cm]{\cancel{2} \times 5}}{\rep[1.7cm]{\cancel{2} \times 8}}=\dfrac{\rep{5}}{\rep{8}}$ \\
+d. \ $\dfrac{30}{50}=\dfrac{\rep[1.7cm]{\cancel{10} \times 3}}{\rep[1.7cm]{\cancel{10} \times 5}}=\dfrac{\rep{3}}{\rep{5}}$ &
+e. \ $\dfrac{21}{27}=\dfrac{\rep[1.7cm]{\cancel{3} \times 7}}{\rep[1.7cm]{\cancel{3} \times 9}}=\dfrac{\rep{7}}{\rep{9}}$ &
+f. \ $\dfrac{25}{40}=\dfrac{\rep[1.7cm]{\cancel{5} \times 5}}{\rep[1.7cm]{\cancel{5} \times 8}}=\dfrac{\rep{5}}{\rep{8}}$ \\
+\end{tabularx}
+\end{exercice}
+}
+
+\begin{document}
+
+\corrigefalse
+\feuille
+
+\newpage
+\corrigetrue
+\feuille
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% End:

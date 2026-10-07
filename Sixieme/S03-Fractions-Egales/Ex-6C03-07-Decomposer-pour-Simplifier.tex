@@ -1,0 +1,106 @@
+%% Font size %%
+\documentclass[11pt]{article}
+
+%% Load the custom package
+\usepackage{Mathdoc}
+\usepackage{cancel}
+
+%% Numéro de séquence %% Titre de la séquence %%
+\renewcommand{\centerhead}{S03 - Décomposer pour simplifier}
+
+%% Spacing commands %%
+\renewcommand{\baselinestretch}{1} \setlength{\parindent}{0pt}
+
+% Corrigé : la feuille est écrite une seule fois (\feuille) puis imprimée
+% deux fois, sans puis avec les réponses en rouge.
+\newif\ifcorrige
+% Réponse dans une case de largeur fixe : \rep[largeur]{réponse}
+% (pointillés sur le sujet, réponse en rouge sur le corrigé, même place)
+\newcommand{\rep}[2][0.8cm]{\makebox[#1]{\ifcorrige\textcolor{red}{$#2$}\else\dotfill\fi}}
+% Facteur commun à barrer : imprimé sur le sujet, barré en rouge sur le corrigé
+\newcommand{\barre}[1]{\ifcorrige{\renewcommand{\CancelColor}{\color{red}}\cancel{#1}}\else #1\fi}
+% Item déjà fait (exemple) : fond grisé
+\newcommand{\fait}[1]{\colorbox{gray!15}{#1}}
+\newcommand{\marqueex}{\colorbox{gray!15}{\strut\ }}
+
+\newcommand{\feuille}{%
+\setcounter{exercice}{0}
+
+\begin{tcolorbox}[width=\linewidth-1cm,colback=white,colframe=black,boxrule=0.6pt,arc=2mm,left=2mm,right=2mm,top=0.5mm,bottom=0.5mm]
+\textbf{Décomposer} un nombre, c'est l'écrire comme un produit de
+nombres \textbf{premiers}\newline ($2$, $3$, $5$, $7$\ldots) : on
+utilise les tables jusqu'à ce qu'on ne puisse plus découper.
+\hfill $24 = 4 \times 6 = 2 \times 2 \times 2 \times 3$\hspace*{0.5cm}
+\end{tcolorbox}
+\vspace{-1.5em}
+\begin{exercice}[1][Décompose (deux facteurs)]
+Écris chaque nombre comme un produit de deux nombres premiers. \hfill \marqueex\ = exemple
+
+\renewcommand{\arraystretch}{2.0}
+\begin{tabularx}{\linewidth}{@{}XXX@{}}
+\fait{a. \ $6 = 2 \times 3$} &
+b. \ $10 = \rep[1.6cm]{2 \times 5}$ &
+c. \ $14 = \rep[1.6cm]{2 \times 7}$ \\
+d. \ $15 = \rep[1.6cm]{3 \times 5}$ &
+e. \ $21 = \rep[1.6cm]{3 \times 7}$ &
+f. \ $35 = \rep[1.6cm]{5 \times 7}$ \\
+g. \ $9 = \rep[1.6cm]{3 \times 3}$ &
+h. \ $25 = \rep[1.6cm]{5 \times 5}$ &
+i. \ $49 = \rep[1.6cm]{7 \times 7}$ \\
+\end{tabularx}
+\end{exercice}
+
+\vspace{-1.2em}
+\begin{exercice}[2][Décompose (plusieurs facteurs)]
+Découpe avec les tables, jusqu'à n'avoir que des nombres premiers. \hfill \marqueex\ = exemple
+
+\renewcommand{\arraystretch}{2.0}
+\begin{tabularx}{\linewidth}{@{}XXX@{}}
+\fait{a. \ $12 = 2 \times 2 \times 3$} &
+b. \ $8 = \rep[2.9cm]{2 \times 2 \times 2}$ &
+c. \ $18 = \rep[2.9cm]{2 \times 3 \times 3}$ \\
+d. \ $20 = \rep[2.9cm]{2 \times 2 \times 5}$ &
+e. \ $27 = \rep[2.9cm]{3 \times 3 \times 3}$ &
+f. \ $28 = \rep[2.9cm]{2 \times 2 \times 7}$ \\
+g. \ $36 = \rep[2.9cm]{2 \times 2 \times 3 \times 3}$ &
+h. \ $40 = \rep[2.9cm]{2 \times 2 \times 2 \times 5}$ &
+i. \ $45 = \rep[2.9cm]{3 \times 3 \times 5}$ \\
+j. \ $48 = \rep[2.9cm]{2 \times 2 \times 2 \times 2 \times 3}$ &
+k. \ $56 = \rep[2.9cm]{2 \times 2 \times 2 \times 7}$ &
+l. \ $63 = \rep[2.9cm]{3 \times 3 \times 7}$ \\
+\end{tabularx}
+\end{exercice}
+
+\vspace{-1.2em}
+\begin{exercice}[3][Décompose, barre, simplifie]
+Décompose en haut et en bas, barre \textbf{tous} les facteurs communs, puis simplifie. \hfill \marqueex\ = exemple
+
+\renewcommand{\arraystretch}{3.0}
+\begin{tabularx}{\linewidth}{@{}XX@{}}
+\fait{a. \ $\dfrac{12}{18}=\dfrac{\cancel{2} \times 2 \times \cancel{3}}{\cancel{2} \times \cancel{3} \times 3}=\dfrac{2}{3}$} &
+b. \ $\dfrac{18}{24}=\dfrac{\rep[3.6cm]{\cancel{2} \times \cancel{3} \times 3}}{\rep[3.6cm]{\cancel{2} \times 2 \times 2 \times \cancel{3}}}=\dfrac{\rep{3}}{\rep{4}}$ \\
+c. \ $\dfrac{20}{30}=\dfrac{\rep[3.6cm]{\cancel{2} \times 2 \times \cancel{5}}}{\rep[3.6cm]{\cancel{2} \times 3 \times \cancel{5}}}=\dfrac{\rep{2}}{\rep{3}}$ &
+d. \ $\dfrac{28}{42}=\dfrac{\rep[3.6cm]{\cancel{2} \times 2 \times \cancel{7}}}{\rep[3.6cm]{\cancel{2} \times 3 \times \cancel{7}}}=\dfrac{\rep{2}}{\rep{3}}$ \\
+e. \ $\dfrac{36}{48}=\dfrac{\rep[3.6cm]{\cancel{2} \times \cancel{2} \times \cancel{3} \times 3}}{\rep[3.6cm]{\cancel{2} \times \cancel{2} \times 2 \times 2 \times \cancel{3}}}=\dfrac{\rep{3}}{\rep{4}}$ &
+f. \ $\dfrac{45}{60}=\dfrac{\rep[3.6cm]{\cancel{3} \times 3 \times \cancel{5}}}{\rep[3.6cm]{2 \times 2 \times \cancel{3} \times \cancel{5}}}=\dfrac{\rep{3}}{\rep{4}}$ \\
+g. \ $\dfrac{24}{40}=\dfrac{\rep[3.6cm]{\cancel{2} \times \cancel{2} \times \cancel{2} \times 3}}{\rep[3.6cm]{\cancel{2} \times \cancel{2} \times \cancel{2} \times 5}}=\dfrac{\rep{3}}{\rep{5}}$ &
+h. \ $\dfrac{30}{42}=\dfrac{\rep[3.6cm]{\cancel{2} \times \cancel{3} \times 5}}{\rep[3.6cm]{\cancel{2} \times \cancel{3} \times 7}}=\dfrac{\rep{5}}{\rep{7}}$ \\
+\end{tabularx}
+\end{exercice}
+}
+
+\begin{document}
+
+\corrigefalse
+\feuille
+
+\newpage
+\corrigetrue
+\feuille
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% End:
