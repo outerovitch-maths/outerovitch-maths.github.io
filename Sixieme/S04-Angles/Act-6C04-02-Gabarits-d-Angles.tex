@@ -1,0 +1,115 @@
+%% Fiche d'activité (manipulation) : comparer et ranger des angles sans les
+%% mesurer, avec des gabarits obtenus en pliant une feuille A5.
+%% Le pliage est expliqué à l'oral par le professeur (rien sur la fiche).
+%% Les angles sont tracés en gras et en vraie grandeur pour se voir par
+%% transparence : imprimer à 100 %, sans « ajuster à la page ».
+%% Mesures : A = C = 50°, B = 125°, D = 100°, E = 30°, F = 150°
+%% (A et C égaux malgré des côtés très différents ; E, le plus petit, a de longs côtés).
+
+%% Font size %%
+\documentclass[11pt]{article}
+
+%% Load the custom package
+\usepackage{Mathdoc}
+
+%% Numéro de séquence %% Titre de la séquence %%
+\renewcommand{\centerhead}{S04 - Activité : gabarits d'angles}
+
+%% Spacing commands %%
+\renewcommand{\baselinestretch}{1} \setlength{\parindent}{0pt}
+
+% Corrigé : la feuille est écrite une seule fois (\feuille) puis imprimée
+% deux fois, sans puis avec les réponses en rouge.
+\newif\ifcorrige
+% Réponse dans une case de largeur fixe (pointillés / réponse en rouge)
+\newcommand{\rep}[2][1cm]{\makebox[#1]{\ifcorrige\textcolor{red}{\textbf{#2}}\else\dotfill\fi}}
+% Mot à entourer : \ent{code}{mot}  (1 = bonne réponse, rouge dans le corrigé)
+\newcommand{\ent}[2]{\def\coulcadre{none}%
+  \ifnum#1=1 \ifcorrige\def\coulcadre{red}\fi\fi
+  \tikz[baseline=(m.base)]\node[draw=\coulcadre,thick,rounded corners=2mm,inner sep=2pt](m){\strut #2};}
+% Comparaison à l'angle droit : \cdroit{n}  (1 = plus petit, 3 = plus grand)
+\newcommand{\cdroit}[1]{\ent{\ifnum#1=1 1\else0\fi}{plus petit}\ \ent{\ifnum#1=3 1\else0\fi}{plus grand}}
+% \cmp{X}{signe}{Y} : comparaison à compléter
+\newcommand{\cmp}[3]{$\widehat{#1}$ \rep[0.9cm]{$#2$} $\widehat{#3}$}
+
+% Étape (même habillage que l'environnement exercice)
+\newtcolorbox{etape}[1]{width=\linewidth, colback=white, colbacktitle=white,
+  colframe=black, coltitle=black, fonttitle=\bfseries, boxrule=0.5mm,
+  sharp corners, before skip=2mm, after skip=2mm, title={#1}}
+
+% Angle en vraie grandeur, côtés en gras (visibles par transparence).
+% \angleG{position du sommet}{mesure}{orientation du 1er côté}{longueur (cm)}{nom}
+\newcommand{\angleG}[5]{%
+  \begin{scope}[shift={#1}]
+    \draw[gray!70!black, fill=gray!30] (0,0) -- (#3:5mm) arc[start angle=#3, delta angle=#2, radius=5mm] -- cycle;
+    \draw[line width=1.8pt, line cap=round] (#3:#4) -- (0,0) -- ({#3+#2}:#4);
+    \fill (0,0) circle (1.6pt);
+    \node[font=\large] at ({#3+#2/2+180}:4.5mm) {$#5$};
+  \end{scope}}
+
+\newcommand{\feuille}{%
+\begin{center}
+{\Large\bfseries Comparer des angles}\\[1mm]
+\textbf{Sans rapporteur : avec mes gabarits.}
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}
+  \draw[gray] (-0.4,-0.5) rectangle (17.8,8.9);
+  \angleG{(0.5,0.2)}{50}{10}{5}{A}
+  \angleG{(7.8,2.9)}{50}{200}{2}{C}
+  \angleG{(10.6,0.5)}{125}{30}{1.6}{B}
+  \angleG{(14.6,0.3)}{100}{40}{3.5}{D}
+  \angleG{(1.4,5.4)}{30}{15}{4.4}{E}
+  \angleG{(13.3,5.8)}{150}{10}{2.6}{F}
+\end{tikzpicture}
+\end{center}
+
+\begin{etape}{1. Je compare. Complète avec $<$, $>$ ou $=$.}
+\large\renewcommand{\arraystretch}{1.8}
+\begin{tabularx}{\linewidth}{@{}*{3}{>{\centering\arraybackslash}X}@{}}
+\cmp{A}{<}{B} & \cmp{A}{=}{C} & \cmp{E}{<}{C} \\
+\cmp{D}{<}{B} & \cmp{F}{>}{D} & \cmp{B}{>}{C} \\
+\end{tabularx}
+\end{etape}
+
+\begin{etape}{2. Je range du plus petit au plus grand.}
+\centering\large\renewcommand{\arraystretch}{1.6}
+\rep[1.5cm]{$\widehat{E}$} \rep[0.6cm]{$<$} \rep[1.5cm]{$\widehat{A}$} \rep[0.6cm]{$=$} \rep[1.5cm]{$\widehat{C}$} \rep[0.6cm]{$<$}
+\rep[1.5cm]{$\widehat{D}$} \rep[0.6cm]{$<$} \rep[1.5cm]{$\widehat{B}$} \rep[0.6cm]{$<$} \rep[1.5cm]{$\widehat{F}$}
+\end{etape}
+
+\begin{etape}{3. Je compare avec un angle droit (le coin de mon cahier). Entoure.}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{\linewidth}{@{}*{2}{>{\centering\arraybackslash}X}@{}}
+$\widehat{A}$ est \cdroit{1} & $\widehat{D}$ est \cdroit{3} \\
+$\widehat{F}$ est \cdroit{3} & $\widehat{C}$ est \cdroit{1} \\
+$\widehat{B}$ est \cdroit{3} & $\widehat{E}$ est \cdroit{1} \\
+\end{tabularx}
+\end{etape}
+
+\begin{etape}{Je retiens}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{@{}l@{}}
+Pour comparer deux angles, je superpose les \rep[2.2cm]{sommets} et un \rep[1.6cm]{côté}. \\
+Je compare leur \rep[2.6cm]{ouverture}, pas la longueur de leurs \rep[1.8cm]{côtés}. \\
+Deux angles peuvent être \rep[1.8cm]{égaux} même si leurs côtés n'ont pas la même longueur. \\
+\end{tabular}
+\end{etape}
+}
+
+\begin{document}
+
+\corrigefalse
+\feuille
+
+\newpage
+\corrigetrue
+\feuille
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% End:
