@@ -1,0 +1,129 @@
+%% Fiche d'activité : découverte de la notion d'angle (ouverture).
+%% Figures reprises du cahier Sésamath 6e (p. 94, ex. 1 et 2), passées en
+%% niveaux de gris : images/Sesa-portes-nb.pdf, images/Sesa-champs-vision-nb.pdf
+%% (découpées dans _Archive/pg_94.pdf ; ne pas renommer).
+%% Corrigé :
+%%  - portes : la porte 1 est la plus ouverte (bord libre plus « fuyant »,
+%%    largeur apparente plus faible que la porte 2) ;
+%%  - champs de vision (mesures approximatives sur la figure) :
+%%    Hibou ~160° < Homme ~180° < Crabe ~200° < Chien < Chat < Cheval < Mouche 360°.
+
+%% Font size %%
+\documentclass[11pt]{article}
+
+%% Load the custom package
+\usepackage{Mathdoc}
+
+%% Numéro de séquence %% Titre de la séquence %%
+\renewcommand{\centerhead}{S04 - Activité : découvrir les angles}
+
+%% Spacing commands %%
+\renewcommand{\baselinestretch}{1} \setlength{\parindent}{0pt}
+
+% Corrigé : la feuille est écrite une seule fois (\feuille) puis imprimée
+% deux fois, sans puis avec les réponses en rouge.
+\newif\ifcorrige
+% Réponse dans une case de largeur fixe (pointillés / réponse en rouge)
+\newcommand{\rep}[2][1.8cm]{\makebox[#1]{\ifcorrige\textcolor{red}{\textbf{#2}}\else\dotfill\fi}}
+% Mot à entourer : \ent{code}{mot}  (1 = bonne réponse, rouge dans le corrigé)
+\newcommand{\ent}[2]{\def\coulcadre{none}%
+  \ifnum#1=1 \ifcorrige\def\coulcadre{red}\fi\fi
+  \tikz[baseline=(m.base)]\node[draw=\coulcadre,thick,rounded corners=2mm,inner sep=2pt](m){\strut #2};}
+
+% Étape (même habillage que la fiche gabarits Act-6C04-02)
+\newtcolorbox{etape}[1]{width=\linewidth, colback=white, colbacktitle=white,
+  colframe=black, coltitle=black, fonttitle=\bfseries, boxrule=0.5mm,
+  sharp corners, before skip=2mm, after skip=2mm, title={#1}}
+
+\newcommand{\feuille}{%
+\begin{center}
+{\Large\bfseries Découvrir les angles}
+\end{center}
+\vspace{-2mm}
+
+\begin{tcolorbox}[colback=white,colframe=black,boxrule=0.6pt,arc=2mm,left=2mm,right=2mm,top=1mm,bottom=1mm]
+\begin{minipage}[c]{0.62\linewidth}
+\textbf{Rappel :} la \textbf{demi-droite} $[Ox)$ commence au point $O$\\
+et continue \textbf{sans fin} d'un seul côté.
+\end{minipage}\hfill
+\begin{minipage}[c]{0.35\linewidth}\centering
+\begin{tikzpicture}
+  \draw[thick] (0,0) -- (4,0);
+  \draw[thick, dashed] (4,0) -- (4.6,0);
+  \fill (0,0) circle (1.5pt);
+  \node[below] at (0,0) {$O$};
+  \draw (3.2,0) ++(-2pt,-2pt) -- ++(4pt,4pt) ++(-4pt,0) -- ++(4pt,-4pt);
+  \node[below] at (3.2,0) {$x$};
+\end{tikzpicture}
+\end{minipage}
+\end{tcolorbox}
+
+\begin{etape}{1. Les portes}
+\begin{minipage}[c]{0.5\linewidth}\centering
+\includegraphics[width=\linewidth]{images/Sesa-portes-nb.pdf}\\[-1mm]
+\makebox[0.5\linewidth]{\textbf{porte 1}}\makebox[0.5\linewidth]{\textbf{porte 2}}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.46\linewidth}
+\textbf{a.} Quelle porte est la plus ouverte ? Entoure.
+
+\smallskip
+\centering \ent{1}{porte 1} \qquad \ent{0}{porte 2}
+
+\raggedright
+\bigskip
+\textbf{b.} Complète.
+
+\smallskip
+Plus la porte est ouverte, plus l'écart entre la porte et le mur est \rep{grand}.
+\end{minipage}
+\end{etape}
+
+\begin{etape}{2. Ce que voient les animaux}
+\begin{minipage}[c]{0.44\linewidth}\centering
+\includegraphics[width=\linewidth]{images/Sesa-champs-vision-nb.pdf}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.53\linewidth}
+La partie grise montre ce que l'animal voit\\sans bouger les yeux.
+
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{@{}l@{\ }l@{}}
+\textbf{a.} Qui voit le \textbf{plus} large ? & \rep[2.2cm]{la mouche} \\
+\textbf{b.} Qui voit le \textbf{moins} large ? & \rep[2.2cm]{le hibou} \\
+\textbf{c.} Le chat voit plus large que le chien. & \ent{1}{Vrai} / \ent{0}{Faux} \\
+\end{tabular}
+
+\end{minipage}
+
+\medskip
+\textbf{d.} Range les animaux du \textbf{plus petit} au \textbf{plus grand} champ de vision.
+
+\smallskip
+\centering
+\rep[1.9cm]{Hibou} $<$ \rep[1.9cm]{Homme} $<$ \rep[1.9cm]{Crabe} $<$ \rep[1.9cm]{Chien} $<$
+\rep[1.9cm]{Chat} $<$ \rep[1.9cm]{Cheval} $<$ \rep[1.9cm]{Mouche}
+\end{etape}
+
+\begin{etape}{Je retiens}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{@{}l@{}}
+L'ouverture d'une porte, le champ de vision d'un animal : ce sont des \rep[2cm]{angles}. \\
+Un angle est formé par deux \rep[2.6cm]{demi-droites} qui ont la même origine. \\
+\end{tabular}
+\end{etape}
+}
+
+\begin{document}
+
+\corrigefalse
+\feuille
+
+\newpage
+\corrigetrue
+\feuille
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% End:
