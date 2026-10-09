@@ -1,0 +1,82 @@
+%% Plan de séquence (document enseignant) : vue d'ensemble de la séquence 4,
+%% séances, documents utilisés et évaluations (papier, QCM AMC, Capytale).
+%% Découpage en séances proposé : à ajuster au rythme de la classe.
+
+%% Font size %%
+\documentclass[11pt]{article}
+
+%% Load the custom package
+\usepackage{Mathdoc}
+
+%% Numéro de séquence %% Titre de la séquence %%
+\renewcommand{\centerhead}{S04 - Plan de séquence}
+
+%% Spacing commands %%
+\renewcommand{\baselinestretch}{1} \setlength{\parindent}{0pt}
+
+\newcommand{\champ}[2]{\textbf{#1} & #2 \\ \hline}
+\newcommand{\doc}[1]{\texttt{\small #1}}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Séquence 4 : Les angles}\\[1mm]
+{\large 6\textsuperscript{e} -- Espace et géométrie}
+\end{center}
+
+\renewcommand{\arraystretch}{1.35}
+\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}p{3.4cm}|X|}
+\hline
+\champ{Objectif}{Utiliser le rapporteur avec précision (progression 6\textsuperscript{e}).}
+\champ{Programme (cycle 3)}{Reconnaître et nommer un angle droit, aigu, obtus ; \textbf{comparer des angles sans avoir recours à leur mesure} (superposition, gabarit) ; mesurer et construire un angle de mesure donnée en degrés.}
+\champ{Compétences}{\textbf{GEO10} Nommer un angle -- \textbf{GEO11} Sommet et côtés -- \textbf{GEO12} Nature d'un angle -- \textbf{GEO13} Classer des angles -- \textbf{GEO14} Mesurer au rapporteur -- \textbf{GEO15/16} Construire un angle de mesure donnée. \newline
+\textit{GEO17 (bissectrice) : non traitée dans cette séquence.}}
+\champ{Prérequis}{Point, demi-droite et sa notation $[AB)$, points alignés (séquence 2) ; angle droit et son codage.}
+\champ{Fil rouge}{Calcul mental en début de séance (compléments à $100$ et à $360$, diaporama \doc{Act-6C04-01}) ; tout le travail de recherche dans le \textbf{cahier d'exercices}.}
+\end{tabularx}
+
+\section*{Déroulement prévu}
+
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\linewidth}{|c|>{\raggedright\arraybackslash}X|>{\centering\arraybackslash}p{1.9cm}|>{\raggedright\arraybackslash}p{5.6cm}|}
+\hline
+\textbf{Séance} & \textbf{Contenu} & \textbf{Comp.} & \textbf{Documents} \\ \hline
+1 & Définition d'un angle, sommet et côtés, nommer un angle. & GEO10, 11 &
+Cours I ; \doc{Ex-6C04-01}, \doc{Ex-6C04-02} \\ \hline
+2 & \textbf{Manipulation} : comparer des angles avec des gabarits (pliage d'une A5), puis angles particuliers (nul, aigu, droit, obtus, plat). & GEO12, 13 &
+\doc{Act-6C04-02} (gabarits) ; Cours II ; \doc{Ex-6C04-03}, \doc{Ex-6C04-04} ; préparation \doc{Prep-6C04-01} \\ \hline
+3 & \textbf{Évaluation écrite 1} (35 min), puis reprise : classer des angles. & GEO10, 11 &
+\doc{DS-6C04-01} ; \doc{Ex-6C04-04} \\ \hline
+4 & Mesurer un angle au rapporteur (graduation intérieure / extérieure, vérification par la nature). & GEO14 &
+Cours III ; \doc{Ex-6C04-05} (ex. 1) \\ \hline
+5 & Construire un angle de mesure donnée. & GEO15, 16 &
+Cours IV ; \doc{Ex-6C04-05} (ex. 2), \doc{Ex-6C04-06} \\ \hline
+6 & \textbf{Évaluation écrite 2} (35 min), puis entraînement au permis rapporteur. & GEO12, 13 &
+\doc{DS-6C04-02} \\ \hline
+7 & \textbf{Salle informatique} : permis rapporteur sur Capytale. & GEO10, 14, 15/16 &
+Activité Capytale (voir ci-dessous) \\ \hline
+8 & \textbf{Bilan de la séquence} : QCM corrigé par AMC. & GEO10 à 13 &
+\doc{DS-6C04-05} \\ \hline
+\end{tabularx}
+
+\section*{Évaluations}
+
+\renewcommand{\arraystretch}{1.35}
+\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}p{3.3cm}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{3.6cm}|>{\raggedright\arraybackslash}p{3.2cm}|}
+\hline
+\textbf{Évaluation} & \textbf{Compétences évaluées} & \textbf{Format} & \textbf{Notation} \\ \hline
+\doc{DS-6C04-01} & GEO10 nommer un angle (recto), GEO11 sommet et côtés (verso) & Papier, recto-verso, 35 min & sur 40 + grille de compétences \\ \hline
+\doc{DS-6C04-02} & GEO12 nature d'un angle (recto), GEO13 classer des angles (verso) & Papier, recto-verso, 35 min & sur 40 + grille de compétences \\ \hline
+Permis rapporteur (Capytale) & Nommer, mesurer et construire un angle (GEO10, GEO14, GEO15/16) & Sur ordinateur, activité Capytale & sur 20 \\ \hline
+\doc{DS-6C04-05} QCM & GEO10 à GEO13 : nommer, sommet et côtés, nature, classer & QCM papier, corrigé par AMC & automatique \\ \hline
+\end{tabularx}
+
+\medskip
+\textbf{Lien / code Capytale du permis rapporteur :} \dotfill
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% End:
