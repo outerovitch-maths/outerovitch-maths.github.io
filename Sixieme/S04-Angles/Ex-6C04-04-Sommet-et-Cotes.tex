@@ -1,0 +1,203 @@
+%% Font size %%
+\documentclass[11pt]{article}
+
+%% Load the custom package
+\usepackage{Mathdoc}
+\usepackage{colortbl}
+\usetikzlibrary{calc}
+
+%% Numéro de séquence %% Titre de la séquence %%
+\renewcommand{\centerhead}{S04 - Sommet et côtés d'un angle}
+
+%% Spacing commands %%
+\renewcommand{\baselinestretch}{1} \setlength{\parindent}{0pt}
+
+% Corrigé : la feuille est écrite une seule fois (\feuille) puis imprimée
+% deux fois, sans puis avec les réponses en rouge.
+\newif\ifcorrige
+% Réponse (en mode math) dans une case de largeur fixe : \rep[largeur]{réponse}
+% (pointillés sur le sujet, réponse en rouge sur le corrigé, même place)
+% Ex. : \rep[1.1cm]{[BA)}  --  crochets et parenthèses sans problème entre accolades.
+\newcommand{\rep}[2][0.8cm]{\makebox[#1]{\ifcorrige\textcolor{red}{$#2$}\else\dotfill\fi}}
+% Écriture à entourer : \entoure{faux} ou \entoure[r]{bonne réponse}
+\newcommand{\entoure}[2][]{\def\coulcadre{white}\ifcorrige\if r#1\def\coulcadre{red}\fi\fi\tikz[baseline=(m.base)]\node[draw=\coulcadre,thick,rounded corners=2mm,inner sep=2pt](m){#2};}
+% Écriture entourée en noir (exemple déjà fait)
+\newcommand{\entoureex}[1]{\tikz[baseline=(m.base)]\node[draw=black,thick,rounded corners=2mm,inner sep=2pt](m){#1};}
+% Item déjà fait (exemple) : fond grisé
+\newcommand{\fait}[1]{\colorbox{gray!15}{#1}}
+\newcommand{\marqueex}{\colorbox{gray!15}{\strut\ }}
+% Notation d'un angle
+\newcommand{\ang}[1]{\widehat{#1}}
+
+% Triangle XYZ dont les côtés sont prolongés (droites fines) ;
+% dans le corrigé, les côtés de l'angle de sommet #1 sont repassés en rouge.
+% #7, #8, #9 : direction (en degrés) de chaque étiquette par rapport à son sommet.
+% \triangleCotes{X}{Y}{Z}{x_X,y_X}{x_Y,y_Y}{x_Z,y_Z}{dir_X}{dir_Y}{dir_Z}
+\newcommand{\triangleCotes}[9]{%
+  \begin{tikzpicture}[scale=0.62]
+    \coordinate (P1) at (#4); \coordinate (P2) at (#5); \coordinate (P3) at (#6);
+    \draw[gray] ($(P1)!-0.35!(P2)$) -- ($(P2)!-0.35!(P1)$);
+    \draw[gray] ($(P2)!-0.35!(P3)$) -- ($(P3)!-0.35!(P2)$);
+    \draw[gray] ($(P3)!-0.35!(P1)$) -- ($(P1)!-0.35!(P3)$);
+    \draw[thick] (P1) -- (P2) -- (P3) -- cycle;
+    \ifcorrige
+      \draw[red, line width=1.6pt] ($(P2)!-0.35!(P1)$) -- (P1) -- ($(P3)!-0.35!(P1)$);
+    \fi
+    \node at ($(P1)+(#7:3.5mm)$) {$#1$};
+    \node at ($(P2)+(#8:3.5mm)$) {$#2$};
+    \node at ($(P3)+(#9:3.5mm)$) {$#3$};
+  \end{tikzpicture}%
+}
+
+% Trois demi-droites de même origine O passant par A, B, C ;
+% dans le corrigé, les côtés de l'angle AOC sont repassés en rouge.
+\newcommand{\eventail}{%
+  \begin{tikzpicture}[scale=0.62]
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (5:2.2); \coordinate (B) at (60:2.0); \coordinate (C) at (140:2.0);
+    \draw[thick] (O) -- (5:3.6); \draw[thick] (O) -- (60:3.1); \draw[thick] (O) -- (140:3.1);
+    \ifcorrige
+      \draw[red, line width=1.6pt] (5:3.6) -- (O) -- (140:3.1);
+    \fi
+    \foreach \p in {A,B,C} \draw (\p) ++(-2pt,-2pt) -- ++(4pt,4pt) ++(-4pt,0) -- ++(4pt,-4pt);
+    \node at ($(A)+(-85:3mm)$) {$A$};
+    \node at ($(B)+(-30:3mm)$) {$B$};
+    \node at ($(C)+(230:3mm)$) {$C$};
+    \node at (-90:3.5mm) {$O$};
+  \end{tikzpicture}%
+}
+
+\newcommand{\feuille}{%
+\setcounter{exercice}{0}
+
+\begin{tcolorbox}[width=\linewidth-1cm,colback=white,colframe=black,boxrule=0.6pt,arc=2mm,left=2mm,right=2mm,top=0.5mm,bottom=0.5mm]
+\begin{minipage}{0.64\linewidth}
+\textbf{Rappel :} dans l'angle $\ang{ABC}$,
+\begin{itemize}[nosep,leftmargin=1.2em]
+\item le \textbf{sommet} est la lettre \textbf{du milieu} : le point $B$ ;
+\item les \textbf{côtés} sont les \textbf{demi-droites} $[BA)$ et $[BC)$ :\newline
+elles \textbf{partent du sommet} $B$ et ne s'arrêtent pas.
+\end{itemize}
+\smallskip
+On écrit $[BA)$ : le crochet est du côté du sommet $B$,\newline
+la parenthèse du côté où la demi-droite continue.
+\end{minipage}\hfill
+\begin{minipage}{0.34\linewidth}
+\centering
+\begin{tikzpicture}[scale=0.9]
+  \coordinate (V) at (0,0);
+  \coordinate (P) at (55:1.5); \coordinate (Q) at (5:1.7);
+  \draw[gray!70!black, fill=gray!30] (0,0) -- (5:4.5mm) arc[start angle=5, delta angle=50, radius=4.5mm] -- cycle;
+  \draw[thick] (55:2.4) -- (V) -- (5:2.9);
+  \foreach \p in {P,Q} \draw (\p) ++(-2pt,-2pt) -- ++(4pt,4pt) ++(-4pt,0) -- ++(4pt,-4pt);
+  \node at ($(P)+(145:3mm)$) {$A$};
+  \node at ($(Q)+(-85:3mm)$) {$C$};
+  \node at (210:3.5mm) {$B$};
+  \node[font=\footnotesize, align=center] (s) at (-1.1,0.9) {sommet};
+  \draw[->, >=stealth] (s) -- (-0.1,0.1);
+  \node[font=\footnotesize, anchor=south east] at (55:2.4) {côté $[BA)$};
+  \node[font=\footnotesize, anchor=south] at (5:2.5) {côté $[BC)$};
+\end{tikzpicture}
+\end{minipage}
+\end{tcolorbox}
+\vspace{-1.5em}
+\begin{exercice}[1][Trouve le sommet]
+Écris le \textbf{sommet} de chaque angle. \hfill \marqueex\ = exemple
+
+\renewcommand{\arraystretch}{1.4}
+\begin{tabularx}{\linewidth}{@{}XXXX@{}}
+\fait{a. \ $\ang{ABC}$ : \makebox[0.8cm]{$B$}} &
+b. \ $\ang{RST}$ : \rep{S} &
+c. \ $\ang{MNP}$ : \rep{N} &
+d. \ $\ang{EFG}$ : \rep{F} \\
+e. \ $\ang{BAC}$ : \rep{A} &
+f. \ $\ang{UVW}$ : \rep{V} &
+g. \ $\ang{ZXY}$ : \rep{X} &
+h. \ $\ang{TOM}$ : \rep{O} \\
+\end{tabularx}
+\end{exercice}
+
+\vspace{-2.2em}
+\begin{exercice}[2][Complète le tableau]
+\begin{minipage}[c]{0.3\linewidth}
+Complète le tableau.
+
+\smallskip
+\textbf{Attention :} sur les lignes e, f et g, c'est le \textbf{nom de l'angle} qu'il faut trouver !
+
+\smallskip
+\marqueex\ = exemple
+\end{minipage}\hfill
+\begin{minipage}[c]{0.68\linewidth}
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|c|c|}
+\hline
+\multicolumn{1}{|c|}{\textbf{Angle}} & \textbf{Sommet} & \textbf{Côtés} \\ \hline
+\rowcolor{gray!15} a. \ $\ang{ABC}$ & $B$ & $[BA)$ \ et \ $[BC)$ \\ \hline
+b. \ $\ang{DEF}$ & \rep{E} & \rep[1.3cm]{[ED)} \ et \ \rep[1.3cm]{[EF)} \\ \hline
+c. \ $\ang{RST}$ & \rep{S} & \rep[1.3cm]{[SR)} \ et \ \rep[1.3cm]{[ST)} \\ \hline
+d. \ $\ang{KIJ}$ & \rep{I} & \rep[1.3cm]{[IK)} \ et \ \rep[1.3cm]{[IJ)} \\ \hline
+e. \ \rep[3.3cm]{\ang{AOB} \text{ ou } \ang{BOA}} & $O$ & $[OA)$ \ et \ $[OB)$ \\ \hline
+f. \ \rep[3.3cm]{\ang{PMN} \text{ ou } \ang{NMP}} & $M$ & $[MP)$ \ et \ $[MN)$ \\ \hline
+g. \ \rep[3.3cm]{\ang{GHE} \text{ ou } \ang{EHG}} & $H$ & $[HG)$ \ et \ $[HE)$ \\ \hline
+\end{tabular}
+\end{minipage}
+\end{exercice}
+
+\vspace{-2.2em}
+\begin{exercice}[2][Entoure la bonne écriture]
+a. à d. : entoure \textbf{un côté} de l'angle. \quad e. et f. : entoure \textbf{les deux côtés}. \hfill \marqueex\ = exemple
+
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}l@{\hspace{1.5cm}}l@{}}
+\fait{a. $\ang{ABC}$ : \ $[AB)$ \ \entoureex{$[BA)$} \ $[BA]$ \ $[CA)$} &
+b. $\ang{DEF}$ : \ \entoure{$[DE)$} \ \entoure{$[ED]$} \ \entoure[r]{$[ED)$} \ \entoure{$[FD)$} \\
+c. $\ang{MNP}$ : \ \entoure{$[PN)$} \ \entoure[r]{$[NP)$} \ \entoure{$[MN)$} \ \entoure{$[NP]$} &
+d. $\ang{RST}$ : \ \entoure{$[RS)$} \ \entoure{$[ST]$} \ \entoure{$[TS)$} \ \entoure[r]{$[SR)$} \\
+\multicolumn{2}{@{}l@{}}{e. Les côtés de $\ang{XYZ}$ : \quad \entoure{$[XY)$ et $[XZ)$} \quad \entoure[r]{$[YX)$ et $[YZ)$} \quad \entoure{$[YX]$ et $[YZ]$}} \\
+\multicolumn{2}{@{}l@{}}{f. Les côtés de $\ang{GHK}$ : \quad \entoure[r]{$[HG)$ et $[HK)$} \quad \entoure{$[GH)$ et $[HK)$} \quad \entoure{$[GH)$ et $[GK)$}} \\
+\end{tabular}
+\end{exercice}
+
+\vspace{-2.2em}
+\begin{exercice}[3][Sur une figure]
+Complète, puis repasse en couleur les côtés de l'angle demandé. \hfill \marqueex\ = exemple
+
+\begin{minipage}[c]{0.3\linewidth}\centering\eventail\end{minipage}\hfill
+\begin{minipage}[c]{0.68\linewidth}
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{@{}l@{}}
+\fait{a. $\ang{AOB}$ : sommet $O$ ; \ côtés $[OA)$ et $[OB)$} \\
+b. $\ang{BOC}$ : sommet \rep{O} ; \ côtés \rep[1.3cm]{[OB)} et \rep[1.3cm]{[OC)} \\
+c. Repasse en couleur les côtés de l'angle $\ang{AOC}$. \\
+\end{tabular}
+\end{minipage}
+
+\begin{minipage}[c]{0.3\linewidth}\centering\triangleCotes{L}{K}{M}{0.4,2.0}{0,0}{3,0.3}{20}{135}{245}\end{minipage}\hfill
+\begin{minipage}[c]{0.68\linewidth}
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{@{}l@{}}
+d. $\ang{LKM}$ : sommet \rep{K} ; \ côtés \rep[1.3cm]{[KL)} et \rep[1.3cm]{[KM)} \\
+e. $\ang{KML}$ : sommet \rep{M} ; \ côtés \rep[1.3cm]{[MK)} et \rep[1.3cm]{[ML)} \\
+f. Repasse en couleur les côtés de l'angle $\ang{KLM}$. \\
+\end{tabular}
+\end{minipage}
+\end{exercice}
+}
+
+\begin{document}
+
+\corrigefalse
+\feuille
+
+\newpage
+\corrigetrue
+\feuille
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% End:

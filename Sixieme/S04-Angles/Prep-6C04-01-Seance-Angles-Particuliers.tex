@@ -1,0 +1,154 @@
+%% Fiche de préparation de séance (format type INSPE) -- document enseignant.
+%% Pages 1-2 : préparation ; page 3 : calcul mental à projeter ; page 4 : même page, réponses en rouge.
+
+%% Font size %%
+\documentclass[11pt]{article}
+
+%% Load the custom package
+\usepackage{Mathdoc}
+
+%% Numéro de séquence %% Titre de la séquence %%
+\renewcommand{\centerhead}{S04 - Préparation de séance}
+
+%% Spacing commands %%
+\renewcommand{\baselinestretch}{1} \setlength{\parindent}{0pt}
+
+\newcommand{\champ}[2]{\textbf{#1} & #2 \\ \hline}
+\newcommand{\minutes}[1]{\textbf{#1 min}}
+
+% Calcul mental (pages 3 et 4) : même page, sans puis avec les réponses en rouge.
+\newif\ifcorrige
+\newcommand{\rep}[1]{\makebox[2.2cm]{\ifcorrige\textcolor{red}{\textbf{#1}}\else\dotfill\fi}}
+\newcommand{\calculmental}{%
+\begin{center}
+{\Huge\bfseries Calcul mental}\\[3mm]
+{\Large Écris seulement le résultat.}
+\end{center}
+
+\vspace{6mm}
+\renewcommand{\arraystretch}{2.1}
+{\LARGE
+\begin{tabularx}{\linewidth}{XX}
+\textbf{Complète pour faire 100} & \textbf{Complète pour faire 360} \\
+1. \enskip 35 + \rep{65} = 100 & 6. \enskip 300 + \rep{60} = 360 \\
+2. \enskip 72 + \rep{28} = 100 & 7. \enskip 180 + \rep{180} = 360 \\
+3. \enskip 45 + \rep{55} = 100 & 8. \enskip 270 + \rep{90} = 360 \\
+4. \enskip 8 + \rep{92} = 100 & 9. \enskip 200 + \rep{160} = 360 \\
+5. \enskip 61 + \rep{39} = 100 & 10. \enskip 345 + \rep{15} = 360 \\
+\end{tabularx}}
+
+\vspace{1cm}
+\begin{center}
+\large\textit{Pourquoi 360 ? Un tour complet mesure $360\degre$ : c'est $4$ angles droits ($4 \times 90 = 360$) ou $2$ angles plats ($2 \times 180 = 360$).}
+\end{center}
+}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Fiche de préparation de séance}\\[1mm]
+{\large Séquence 4 : Les angles -- Séance 2 : la nature d'un angle}
+\end{center}
+
+\renewcommand{\arraystretch}{1.35}
+\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}p{3.6cm}|X|}
+\hline
+\champ{Classe / effectif}{6\textsuperscript{e} \dotfill\quad \dotfill élèves}
+\champ{Date / horaire}{Mardi \dotfill \qquad Durée : 55 min}
+\champ{Place dans la séquence}{Séance 2 sur 6 environ.\enskip
+S1 : définition, sommet, côtés, nommer un angle.\enskip
+\textbf{S2 : angles particuliers (nature).}\enskip
+S3-S4 : mesurer au rapporteur.\enskip S5 : construire.\enskip S6 : évaluation.}
+\champ{Domaine du programme}{Cycle 3 -- Espace et géométrie : reconnaître et nommer un angle droit, aigu, obtus, plat ; utiliser le vocabulaire géométrique.}
+\champ{Compétences travaillées}{\textbf{6C04-GEO12} -- Reconnaître la nature d'un angle (nul, aigu, droit, obtus, plat).\newline \textbf{6C04-GEO13} -- Classer des angles selon leur nature.\newline
+Compétences mathématiques : \textit{Représenter} (lire une figure), \textit{Raisonner} (comparer à l'angle droit et à l'angle plat), \textit{Communiquer} (vocabulaire précis : aigu, obtus\ldots).\newline
+Socle : domaine 1 (langages mathématiques), domaine 2 (méthodes : classer, organiser dans un tableau).}
+\champ{Objectifs de la séance}{À la fin de la séance, l'élève est capable :
+\begin{itemize}[nosep,leftmargin=1.2em]
+\item de dire si un angle est \textbf{nul, aigu, droit, obtus ou plat}, en le comparant à l'angle droit ;
+\item de donner la nature d'un angle connaissant sa \textbf{mesure} ;
+\item de \textbf{classer} une série d'angles dans un tableau.
+\end{itemize}}
+\champ{Prérequis}{Nommer un angle ($\widehat{ABC}$), son sommet, ses côtés (séance 1) ; angle droit et son codage (petit carré) ; points alignés.}
+\champ{Matériel}{\textbf{Professeur} : vidéoprojecteur (calcul mental, figures).\newline
+\textbf{Élèves} : cahier de cours, ardoise ; fiches \textbf{Ex-6C04-05} (nature d'un angle) et \textbf{Ex-6C04-06} (classer des angles), corrigés imprimés (page 2 de chaque fiche) au bureau.}
+\champ{Trace écrite}{Cours, partie II : tableau des angles particuliers + exercice traité (méthode, classement).}
+\end{tabularx}
+
+\vspace{2mm}
+\textbf{Obstacles prévisibles :} confondre la nature et la \textbf{taille des côtés} (un angle « dessiné grand » n'est pas forcément obtus) ;
+orientation inhabituelle (aucun côté horizontal) ; angles proches de $90\degre$ ($89\degre$ / $91\degre$) ;
+angle nul et angle plat souvent oubliés (ils « ne ressemblent pas » à des angles).
+
+\newpage
+
+\section*{Déroulement}
+
+\renewcommand{\arraystretch}{1.3}
+\small
+\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}p{2.1cm}|>{\centering\arraybackslash}p{0.9cm}|X|X|>{\raggedright\arraybackslash}p{2cm}|}
+\hline
+\textbf{Phase} & \textbf{Durée} & \textbf{Rôle du professeur} & \textbf{Activité des élèves} & \textbf{Modalité / supports} \\ \hline
+
+1. Entrée en classe, automatismes &
+\minutes{10} &
+Projette 10 questions de calcul mental (annexe) : compléments à $100$ puis à $360$, $\approx 20$ s par question. Correction rapide, fait verbaliser une procédure (« $360 - 270$ : je pense $270 + 30 = 300$, $+ 60$ »). &
+Répondent sur l'ardoise ou au cahier, sans poser l'opération. Expliquent leur stratégie. &
+Individuel puis collectif. Diaporama (annexe). \\ \hline
+
+2. Rappel de la séance 1 &
+\minutes{5} &
+Trace un angle au tableau, interroge : « Comment s'appelle cet angle ? Quel est son sommet ? Quels sont ses côtés ? ». Insiste sur $[BA)$ (sommet en premier). &
+Répondent à l'oral, un élève vient écrire au tableau. &
+Collectif, oral. \\ \hline
+
+3. Découverte : trier des angles &
+\minutes{8} &
+Projette 6 angles variés (orientations différentes). Question : « Comparez chaque angle à l'angle droit (le coin d'une feuille). Faites des familles. » Circule, repère les procédures. &
+Comparent chaque angle à l'angle droit, proposent des familles : plus petit / pareil / plus grand que l'angle droit, « tout plat ». &
+Binômes, figures projetées. \\ \hline
+
+4. Leçon (synthèse) &
+\minutes{10} &
+Nomme les familles : \textbf{aigu, droit, obtus, plat} (+ \textbf{nul}). Fait le lien avec les mesures ($90\degre$, $180\degre$). Lit l'exercice traité du cours (méthode, classement, piège $89\degre$ / $91\degre$). &
+Collent/copient le tableau de la partie II du cours, complètent l'exercice traité. &
+Collectif. Cours partie II. \\ \hline
+
+5. Entraînement différencié &
+\minutes{18} &
+Présente l'exemple grisé (exercice traité) de la fiche Ex-6C04-05. Circule : aide prioritaire aux élèves repérés en phase 3. Valide puis donne le \textbf{corrigé} (page 2) pour l'autocorrection. &
+\textbf{Tous} : fiche Ex-6C04-05 (reconnaître), puis autocorrection au stylo vert.\newline
+\textbf{Élèves rapides} : fiche Ex-6C04-06 (classer des angles), puis tutorat d'un camarade. &
+Individuel. Fiches Ex-6C04-05 et Ex-6C04-06, corrigés au bureau. \\ \hline
+
+6. Bilan, ticket de sortie &
+\minutes{4} &
+Question flash : « Sur l'ardoise, dessine un angle obtus $\widehat{xOy}$ » puis « $95\degre$ : quelle nature ? ». Donne le travail à la maison. &
+Répondent sur l'ardoise. Notent les devoirs : finir Ex-6C04-05 et apprendre la partie II du cours. &
+Individuel, ardoise. \\ \hline
+\end{tabularx}
+\normalsize
+
+\vspace{3mm}
+\renewcommand{\arraystretch}{1.35}
+\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}p{3.6cm}|X|}
+\hline
+\champ{Différenciation}{\textbf{Aide} : exercice traité en tête de chaque exercice, cours sous les yeux, angles droits codés, aide individuelle du professeur, items progressifs (figures puis mesures).\newline
+\textbf{Approfondissement} : fiche Ex-6C04-06 (classer, ranger), rôle de tuteur.}
+\champ{Évaluation}{\textbf{Formative} : ardoises (phases 1 et 6), observation en phase 3, autocorrection des fiches.\newline
+\textbf{Sommative} (plus tard) : DS-6C04-08 (nature d'un angle) et DS-6C04-09 (classer), grille par compétence.}
+\champ{Prolongement}{Séance 3 : mesurer un angle au rapporteur (6C04-GEO14) ; la nature de l'angle sert à \textbf{vérifier} la mesure lue (graduations intérieures ou extérieures).}
+\champ{Bilan \textit{a posteriori}}{\vspace{1.6cm}}
+\end{tabularx}
+
+\newpage
+\corrigefalse \calculmental
+\newpage
+\corrigetrue \calculmental
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% End:

@@ -1,0 +1,165 @@
+%% POUR LE CORRIGÉ : remplacer \corrigefalse par \corrigetrue (dans \begin{document}).
+%% Avec \corrigefalse, on obtient le sujet seul (1 page) ; avec \corrigetrue,
+%% la même page avec les réponses en rouge (et la mesure de chaque angle).
+
+%% Font size %%
+\documentclass[11pt]{article}
+
+%% Load the custom package
+\usepackage{Mathdoc}
+\usetikzlibrary{calc}
+
+%% Numéro de séquence %% Titre de la séquence %%
+\renewcommand{\centerhead}{S04 - Éval : Classer des angles}
+
+%% Spacing commands %%
+\renewcommand{\baselinestretch}{1} \setlength{\parindent}{0pt}
+
+% Corrigé : la feuille est écrite une seule fois (\feuille).
+\newif\ifcorrige
+% Réponse dans une case de largeur fixe : \rep[largeur]{réponse}
+% (pointillés sur le sujet, réponse en rouge sur le corrigé, même place)
+\newcommand{\rep}[2][0.8cm]{\makebox[#1]{\ifcorrige\textcolor{red}{#2}\else\dotfill\fi}}
+% Texte rouge visible seulement dans le corrigé (texte blanc dans le sujet :
+% même encombrement, mêmes coupures de ligne)
+\newcommand{\cor}[1]{\ifcorrige\textcolor{red}{#1}\else\textcolor{white}{#1}\fi}
+% Mesure à entourer : \entoure[r]{...} (r = bonne réponse, entourée en rouge dans le corrigé)
+\newcommand{\entoure}[2][]{\def\coulcadre{white}\ifcorrige\if r#1\def\coulcadre{red}\fi\fi\tikz[baseline=(m.base)]\node[draw=\coulcadre,thick,rounded corners=2mm,inner sep=2pt](m){#2};}
+
+% Angle de sommet V, de mesure #2 degrés, premier côté orienté à #3 degrés.
+% \angleDessin[échelle]{mesure}{rotation}{L1}{V}{L2}
+% (repris du QCM DS-6C04-05 ; l'angle droit est codé par un petit carré)
+\newcommand{\angleDessin}[6][1]{%
+  \begin{tikzpicture}[scale=#1,baseline=(current bounding box.center)]
+    \coordinate (V) at (0,0);
+    \coordinate (P) at (#3:1.8); \coordinate (Q) at ({#3+#2}:1.8);
+    \ifnum#2=90 % angle droit : codé par un petit carré
+      \draw[gray!70!black, fill=gray!30] (0,0) -- (#3:3mm)
+        -- ($(#3:3mm)+({#3+90}:3mm)$) -- ({#3+90}:3mm) -- cycle;
+    \else
+      \draw[gray!70!black, fill=gray!30] (0,0) -- (#3:4mm)
+        arc[start angle=#3, delta angle=#2, radius=4mm] -- cycle;
+    \fi
+    \draw[thick] (P) -- (V) -- (Q);
+    \fill (P) circle (1pt); \fill (Q) circle (1pt); \fill (V) circle (1pt);
+    \node at (#3:2.15) {$#4$};
+    \node at ({#3+#2/2+180}:5mm) {$#5$};
+    \node at ({#3+#2}:2.15) {$#6$};
+  \end{tikzpicture}%
+}
+% Une case du panneau : figure + nom (+ mesure réelle en rouge dans le corrigé)
+% \caseAngle{mesure}{rotation}{L1}{V}{L2}
+\newcommand{\caseAngle}[5]{%
+  \begin{tabular}{@{}c@{}}
+    \makebox[3.3cm]{\angleDessin[0.6]{#1}{#2}{#3}{#4}{#5}}\\[0mm]
+    $\widehat{#3#4#5}$ \ {\small\cor{\,(#1\degre)}}
+  \end{tabular}}
+% Case de tableau de classement : hauteur fixe #1, contenu #2
+\newcommand{\casetab}[2]{\parbox[t][#1][t]{\linewidth}{\centering\strut #2}}
+
+\newcommand{\feuille}{%
+\phantom{0}
+\vspace{-.5cm}
+
+\entetedevoirs{20}
+
+\begin{center}
+\duree{15 minutes}
+\total{20 points}
+\calculatrice{0}
+\textit{Les angles droits sont codés par un petit carré.}
+\end{center}
+
+% ------------------------------------------------------------------
+% Panneau : mesures réelles (différentes de la fiche Ex-6C04-06 et du QCM)
+%  ABC  50 aigu (exemple) | DEF  90 droit | GHI 150 obtus | JKL  30 aigu
+%  MNP 180 plat           | RST 115 obtus | UVW  90 droit | XYZ  70 aigu
+%  EOF 130 obtus          | TAU  25 aigu
+% Bilan : 4 aigus (dont l'exemple), 2 droits, 3 obtus, 1 plat.
+% ------------------------------------------------------------------
+\vspace{-0.6cm}
+\begin{exercicedevoir}[9][Classe les angles]
+\vspace{-0.3cm}
+Écris le nom de chaque angle dans la bonne colonne du tableau, comme dans l'exemple.
+
+\smallskip
+\centering
+\setlength{\tabcolsep}{2pt}
+\fbox{\begin{tabular}{@{}ccccc@{}}
+\caseAngle{50}{140}{A}{B}{C} & \caseAngle{90}{75}{D}{E}{F} &
+\caseAngle{150}{15}{G}{H}{I} & \caseAngle{30}{200}{J}{K}{L} &
+\caseAngle{180}{120}{M}{N}{P} \\[1mm]
+\caseAngle{115}{280}{R}{S}{T} & \caseAngle{90}{345}{U}{V}{W} &
+\caseAngle{70}{30}{X}{Y}{Z} & \caseAngle{130}{230}{E}{O}{F} &
+\caseAngle{25}{75}{T}{A}{U} \\
+\end{tabular}}
+
+\medskip
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\linewidth}{|*{4}{>{\centering\arraybackslash}X|}}
+\hline
+\textbf{Angles aigus} & \textbf{Angles droits} & \textbf{Angles obtus} & \textbf{Angles plats} \\ \hline
+\casetab{1.1cm}{\textit{Exemple :} $\widehat{ABC}$ \ \cor{$\widehat{JKL}$ \ $\widehat{XYZ}$ \ $\widehat{TAU}$}} &
+\casetab{1.1cm}{\cor{$\widehat{DEF}$ \ $\widehat{UVW}$}} &
+\casetab{1.1cm}{\cor{$\widehat{GHI}$ \ $\widehat{RST}$ \ $\widehat{EOF}$}} &
+\casetab{1.1cm}{\cor{$\widehat{MNP}$}} \\ \hline
+\end{tabularx}
+\end{exercicedevoir}
+
+% Mesures : nul 0 ; aigus 30 (ex.), 88 ; droit 90 ; obtus 95, 160 ; plat 180.
+\vspace{-1.1cm}
+\begin{exercicedevoir}[6][Classe les mesures]
+\vspace{-0.3cm}
+Range chaque mesure dans la bonne colonne, comme dans l'exemple.
+
+\smallskip
+\centering
+\textit{Exemple :} $30\degre$ \qquad\qquad $95\degre$ \qquad $0\degre$ \qquad $88\degre$ \qquad $180\degre$ \qquad $160\degre$ \qquad $90\degre$
+
+\medskip
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\linewidth}{|*{5}{>{\centering\arraybackslash}X|}}
+\hline
+\textbf{Nul} & \textbf{Aigu} & \textbf{Droit} & \textbf{Obtus} & \textbf{Plat} \\ \hline
+\casetab{0.8cm}{\cor{$0\degre$}} &
+\casetab{0.8cm}{\textit{Ex. :} $30\degre$ \ \cor{$88\degre$}} &
+\casetab{0.8cm}{\cor{$90\degre$}} &
+\casetab{0.8cm}{\cor{$95\degre$ \ $160\degre$}} &
+\casetab{0.8cm}{\cor{$180\degre$}} \\ \hline
+\end{tabularx}
+\end{exercicedevoir}
+
+\vspace{-1.1cm}
+\begin{exercicedevoir}[5][Pour aller plus loin]
+\vspace{-0.3cm}
+\textbf{1.} Range ces angles du panneau du \textbf{plus petit} au \textbf{plus grand}. \hfill \textit{(2 points)}
+
+\smallskip
+$\widehat{MNP}$, \ $\widehat{TAU}$, \ $\widehat{DEF}$, \ $\widehat{GHI}$ \qquad $\longrightarrow$ \qquad
+\rep[1.4cm]{$\widehat{TAU}$} $<$ \rep[1.4cm]{$\widehat{DEF}$} $<$ \rep[1.4cm]{$\widehat{GHI}$} $<$ \rep[1.4cm]{$\widehat{MNP}$}
+
+\medskip
+\textbf{2.} Entoure \textbf{toutes} les mesures d'angles \textbf{aigus}. \hfill \textit{(3 points)}
+
+\smallskip
+\centering
+\entoure[r]{$45\degre$} \quad \entoure{$100\degre$} \quad \entoure[r]{$89\degre$} \quad \entoure{$90\degre$} \quad \entoure[r]{$3\degre$} \quad \entoure{$170\degre$} \quad \entoure[r]{$60\degre$} \quad \entoure{$0\degre$} \quad \entoure{$180\degre$}
+\end{exercicedevoir}
+
+\vspace{-0.6cm}
+{\small\competences{
+6C04-GEO13 & Classer des angles selon leur nature & & & & \\ \hline
+}}
+}
+
+\begin{document}
+
+\corrigefalse
+\feuille
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% End:

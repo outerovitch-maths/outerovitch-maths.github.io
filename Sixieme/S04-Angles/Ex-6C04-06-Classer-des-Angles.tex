@@ -1,0 +1,193 @@
+%% Font size %%
+\documentclass[11pt]{article}
+
+%% Load the custom package
+\usepackage{Mathdoc}
+\usetikzlibrary{calc}
+
+%% Numéro de séquence %% Titre de la séquence %%
+\renewcommand{\centerhead}{S04 - Classer des angles}
+
+%% Spacing commands %%
+\renewcommand{\baselinestretch}{1} \setlength{\parindent}{0pt}
+
+% Corrigé : la feuille est écrite une seule fois (\feuille) puis imprimée
+% deux fois, sans puis avec les réponses en rouge.
+\newif\ifcorrige
+% Réponse dans une case de largeur fixe : \rep[largeur]{réponse}
+% (pointillés sur le sujet, réponse en rouge sur le corrigé, même place)
+\newcommand{\rep}[2][0.8cm]{\makebox[#1]{\ifcorrige\textcolor{red}{#2}\else\dotfill\fi}}
+% Texte rouge visible seulement dans le corrigé (place réservée dans le sujet)
+% (texte blanc et non \phantom : il peut passer à la ligne comme dans le corrigé)
+\newcommand{\cor}[1]{\ifcorrige\textcolor{red}{#1}\else\textcolor{white}{#1}\fi}
+% Mot à entourer dans le corrigé : \entoure[r]{mot} (r = bonne réponse)
+\newcommand{\entoure}[2][]{\def\coulcadre{white}\ifcorrige\if r#1\def\coulcadre{red}\fi\fi\tikz[baseline=(m.base)]\node[draw=\coulcadre,thick,rounded corners=2mm,inner sep=2pt](m){#2};}
+% Item déjà fait (exemple) : fond grisé
+\newcommand{\fait}[1]{\colorbox{gray!15}{#1}}
+\newcommand{\marqueex}{\colorbox{gray!15}{\strut\ }}
+
+% Angle de sommet V, de mesure #2 degrés, premier côté orienté à #3 degrés.
+% \angleDessin[échelle]{mesure}{rotation}{L1}{V}{L2}
+% (repris du QCM DS-6C04-05 ; l'angle droit est codé par un petit carré)
+\newcommand{\angleDessin}[6][1]{%
+  \begin{tikzpicture}[scale=#1,baseline=(current bounding box.center)]
+    \coordinate (V) at (0,0);
+    \coordinate (P) at (#3:1.8); \coordinate (Q) at ({#3+#2}:1.8);
+    \ifnum#2=90 % angle droit : codé par un petit carré
+      \draw[gray!70!black, fill=gray!30] (0,0) -- (#3:3mm)
+        -- ($(#3:3mm)+({#3+90}:3mm)$) -- ({#3+90}:3mm) -- cycle;
+    \else
+      \draw[gray!70!black, fill=gray!30] (0,0) -- (#3:4mm)
+        arc[start angle=#3, delta angle=#2, radius=4mm] -- cycle;
+    \fi
+    \draw[thick] (P) -- (V) -- (Q);
+    \fill (P) circle (1pt); \fill (Q) circle (1pt); \fill (V) circle (1pt);
+    \node at (#3:2.15) {$#4$};
+    \node at ({#3+#2/2+180}:5mm) {$#5$};
+    \node at ({#3+#2}:2.15) {$#6$};
+  \end{tikzpicture}%
+}
+% Une case du panneau : figure + nom de l'angle (+ mesure réelle en rouge
+% dans le corrigé). \caseAngle{mesure}{rotation}{L1}{V}{L2}
+\newcommand{\caseAngle}[5]{%
+  \begin{tabular}{@{}c@{}}
+    \makebox[2.6cm]{\angleDessin[0.52]{#1}{#2}{#3}{#4}{#5}}\\[0mm]
+    $\widehat{#3#4#5}$ \ {\small\cor{\,(#1\degre)}}
+  \end{tabular}}
+
+% Mini-figures du rappel
+\newcommand{\miniAngle}[2]{% {mesure}{rotation}
+  \begin{tikzpicture}[scale=0.5,baseline=(current bounding box.center)]
+    \draw[gray!70!black, fill=gray!30] (0,0) -- (#2:3mm)
+      arc[start angle=#2, delta angle=#1, radius=3mm] -- cycle;
+    \draw[thick] (#2:1.6) -- (0,0) -- ({#2+#1}:1.6);
+  \end{tikzpicture}}
+
+% Case de tableau de classement : hauteur fixe #1, contenu #2
+\newcommand{\casetab}[2]{\parbox[t][#1][t]{\linewidth}{\centering\strut #2}}
+
+\newcommand{\feuille}{%
+\setcounter{exercice}{0}
+
+\begin{tcolorbox}[width=\linewidth-1cm,colback=white,colframe=black,boxrule=0.6pt,arc=2mm,left=2mm,right=2mm,top=0.5mm,bottom=0.5mm]
+\textbf{Rappel :} on compare chaque angle à l'\textbf{angle droit} (codé par un petit carré).
+
+\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\linewidth}{@{}*{5}{>{\centering\arraybackslash}X}@{}}
+\begin{tikzpicture}[scale=0.5,baseline=(current bounding box.center)]
+  \draw[thick] (0,0) -- (1.6,0); \draw[thick,gray] (0,0.08) -- (1.6,0.08);
+  \fill (0,0) circle (1.5pt);
+\end{tikzpicture} &
+\miniAngle{50}{10} &
+\begin{tikzpicture}[scale=0.5,baseline=(current bounding box.center)]
+  \draw[gray!70!black, fill=gray!30] (0,0) rectangle (0.6,0.6);
+  \draw[thick] (1.6,0) -- (0,0) -- (0,1.6);
+\end{tikzpicture} &
+\miniAngle{135}{0} &
+\miniAngle{180}{0} \\
+\textbf{nul} & \textbf{aigu} & \textbf{droit} & \textbf{obtus} & \textbf{plat} \\
+$0\degre$ & entre $0\degre$ et $90\degre$ & $90\degre$ & entre $90\degre$ et $180\degre$ & $180\degre$ \\
+\end{tabularx}
+\end{tcolorbox}
+\vspace{-1.6em}
+% ------------------------------------------------------------------
+% Panneau de l'exercice 1 : mesures réelles (différentes du QCM)
+%  ABC  35  aigu   (exemple)    | DEF 125 obtus | GHI  90 droit
+%  JKL 180  plat                | MNP  55 aigu  | RST 150 obtus
+%  UVW  90  droit               | XYZ  25 aigu  | CAD 135 obtus
+%  FOG  90  droit               | PUR  65 aigu  | LQM 180 plat
+% Bilan : 4 aigus, 3 droits, 3 obtus, 2 plats.
+% ------------------------------------------------------------------
+\begin{exercice}[1][Classe les angles du panneau]
+Écris le nom de chaque angle dans la bonne colonne. \hfill \marqueex\ = exemple
+
+\smallskip
+\centering
+\setlength{\tabcolsep}{1.5pt}\fbox{\begin{tabular}{@{}cccccc@{}}
+\caseAngle{35}{20}{A}{B}{C} & \caseAngle{125}{250}{D}{E}{F} &
+\caseAngle{90}{35}{G}{H}{I} & \caseAngle{180}{160}{J}{K}{L} &
+\caseAngle{55}{110}{M}{N}{P} & \caseAngle{150}{-5}{R}{S}{T} \\[0.5mm]
+\caseAngle{90}{205}{U}{V}{W} & \caseAngle{25}{325}{X}{Y}{Z} &
+\caseAngle{135}{60}{C}{A}{D} & \caseAngle{90}{300}{F}{O}{G} &
+\caseAngle{65}{190}{P}{U}{R} & \caseAngle{180}{15}{L}{Q}{M} \\
+\end{tabular}}
+
+\medskip
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\linewidth}{|*{4}{>{\centering\arraybackslash}X|}}
+\hline
+\textbf{Angles aigus} & \textbf{Angles droits} & \textbf{Angles obtus} & \textbf{Angles plats} \\ \hline
+\casetab{1.0cm}{\fait{$\widehat{ABC}$} \ \cor{$\widehat{MNP}$ \ $\widehat{XYZ}$ \ $\widehat{PUR}$}} &
+\casetab{1.0cm}{\cor{$\widehat{GHI}$ \ $\widehat{UVW}$ \ $\widehat{FOG}$}} &
+\casetab{1.0cm}{\cor{$\widehat{DEF}$ \ $\widehat{RST}$ \ $\widehat{CAD}$}} &
+\casetab{1.0cm}{\cor{$\widehat{JKL}$ \ $\widehat{LQM}$}} \\ \hline
+\end{tabularx}
+\end{exercice}
+
+\vspace{-1.5em}
+% Mesures : nul 0 ; aigus 45 (ex.), 12, 89, 1, 75 ; droit 90 ;
+% obtus 120, 91, 179, 135 ; plat 180.
+\begin{exercice}[2][Classe les mesures]
+Range chaque mesure d'angle dans la bonne colonne. \hfill \marqueex\ = exemple
+
+\smallskip
+\centering
+\fait{$45\degre$} \quad $120\degre$ \quad $90\degre$ \quad $12\degre$ \quad $180\degre$ \quad $89\degre$ \quad $91\degre$ \quad $0\degre$ \quad $179\degre$ \quad $1\degre$ \quad $135\degre$ \quad $75\degre$
+
+\medskip
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\linewidth}{|*{5}{>{\centering\arraybackslash}X|}}
+\hline
+\textbf{Nul} & \textbf{Aigu} & \textbf{Droit} & \textbf{Obtus} & \textbf{Plat} \\ \hline
+\casetab{1.05cm}{\cor{$0\degre$}} &
+\casetab{1.05cm}{\fait{$45\degre$} \ \cor{$12\degre$ \ $89\degre$ \ $1\degre$ \ $75\degre$}} &
+\casetab{1.05cm}{\cor{$90\degre$}} &
+\casetab{1.05cm}{\cor{$120\degre$ \ $91\degre$ \ $179\degre$ \ $135\degre$}} &
+\casetab{1.05cm}{\cor{$180\degre$}} \\ \hline
+\end{tabularx}
+\end{exercice}
+
+\vspace{-1.5em}
+\begin{exercice}[3][Pour aller plus loin]
+\textbf{a.} Range ces angles du panneau du \textbf{plus petit} au \textbf{plus grand} (utilise leur nature !). \hfill \marqueex\ = exemple
+
+\smallskip
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}ll@{}}
+\fait{$\widehat{ABC}$, \ $\widehat{JKL}$, \ $\widehat{GHI}$} &
+\fait{$\widehat{ABC} < \widehat{GHI} < \widehat{JKL}$} \\
+$\widehat{RST}$, \ $\widehat{XYZ}$, \ $\widehat{UVW}$, \ $\widehat{LQM}$ &
+\rep[1.4cm]{$\widehat{XYZ}$} $<$ \rep[1.4cm]{$\widehat{UVW}$} $<$ \rep[1.4cm]{$\widehat{RST}$} $<$ \rep[1.4cm]{$\widehat{LQM}$} \\
+$\widehat{DEF}$, \ $\widehat{XYZ}$, \ $\widehat{RST}$, \ $\widehat{MNP}$ \quad &
+\rep[1.4cm]{$\widehat{XYZ}$} $<$ \rep[1.4cm]{$\widehat{MNP}$} $<$ \rep[1.4cm]{$\widehat{DEF}$} $<$ \rep[1.4cm]{$\widehat{RST}$} \\
+\end{tabular}
+
+\smallskip
+\textbf{b.} Je suis un angle \textbf{obtus}. Entoure mes mesures possibles : \hfill
+\entoure{$60\degre$}\,\entoure[r]{$95\degre$}\,\entoure{$90\degre$}\,\entoure[r]{$170\degre$}\,\entoure{$180\degre$}\,\entoure[r]{$120\degre$}\,\entoure[r]{$179\degre$}
+
+\smallskip
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\linewidth}{@{}lXr@{}}
+\textbf{c.} Vrai ou faux ? \ & Un angle obtus est toujours plus grand qu'un angle aigu. & \entoure[r]{vrai} \ \entoure{faux} \\
+& Un angle de $89\degre$ est un angle droit. & \entoure{vrai} \ \entoure[r]{faux} \\
+& Deux angles droits ont toujours la même mesure. & \entoure[r]{vrai} \ \entoure{faux} \\
+\end{tabularx}
+\end{exercice}
+}
+
+\begin{document}
+
+\corrigefalse
+\feuille
+
+\newpage
+\corrigetrue
+\feuille
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% End:

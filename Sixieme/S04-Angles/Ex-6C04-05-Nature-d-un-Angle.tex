@@ -1,0 +1,208 @@
+%% Font size %%
+\documentclass[11pt]{article}
+
+%% Load the custom package
+\usepackage{Mathdoc}
+\usetikzlibrary{calc}
+\usepackage{colortbl}
+
+%% Numéro de séquence %% Titre de la séquence %%
+\renewcommand{\centerhead}{S04 - Nature d'un angle}
+
+%% Spacing commands %%
+\renewcommand{\baselinestretch}{1} \setlength{\parindent}{0pt}
+
+% Corrigé : la feuille est écrite une seule fois (\feuille) puis imprimée
+% deux fois, sans puis avec les réponses en rouge.
+\newif\ifcorrige
+% Réponse (texte) dans une case de largeur fixe : \rep[largeur]{réponse}
+% (pointillés sur le sujet, réponse en rouge sur le corrigé, même place)
+\newcommand{\rep}[2][1.6cm]{\makebox[#1]{\ifcorrige\textcolor{red}{\textbf{#2}}\else\dotfill\fi}}
+% Mot à entourer : \ent{code}{mot}
+%   code 1 = bonne réponse (entourée en rouge dans le corrigé),
+%   code 2 = exemple déjà fait (entouré en noir partout), 0 = rien.
+\newcommand{\ent}[2]{\def\coulcadre{none}%
+  \ifnum#1=1 \ifcorrige\def\coulcadre{red}\fi\fi
+  \ifnum#1=2 \def\coulcadre{black}\fi
+  \tikz[baseline=(m.base)]\node[draw=\coulcadre,thick,rounded corners=2mm,inner sep=2pt](m){\strut #2};}
+% Les quatre natures à entourer : \choixnat[code]{n}  (n = 1 aigu, 2 droit, 3 obtus, 4 plat)
+% code = 1 (réponse rouge dans le corrigé) ou 2 (exemple, en noir)
+\newcommand{\choixnat}[2][1]{%
+  \ent{\ifnum#2=1 #1\else0\fi}{aigu}\hspace{2pt}%
+  \ent{\ifnum#2=2 #1\else0\fi}{droit}\hspace{2pt}%
+  \ent{\ifnum#2=3 #1\else0\fi}{obtus}\hspace{2pt}%
+  \ent{\ifnum#2=4 #1\else0\fi}{plat}}
+% Item déjà fait (exemple) : fond grisé
+\newcommand{\fait}[1]{\colorbox{gray!15}{#1}}
+\newcommand{\marqueex}{\colorbox{gray!15}{\strut\ }}
+
+% Angle de sommet V, de mesure #2 degrés, premier côté orienté à #3 degrés
+% (d'après le QCM DS-6C04-05).
+% \angleDessin[échelle]{mesure}{rotation}{L1}{V}{L2}
+% Si \codedroittrue : l'angle droit est codé par un petit carré.
+% Si \codedroitfalse : arc pour tous les angles ; dans le corrigé, l'angle
+% droit reçoit son petit carré en rouge (non utilisé : angles droits toujours codés).
+\newif\ifcodedroit \codedroittrue
+\newcommand{\angleDessin}[6][1]{%
+  \begin{tikzpicture}[scale=#1]
+    \coordinate (V) at (0,0);
+    \coordinate (P) at (#3:1.8); \coordinate (Q) at ({#3+#2}:1.8);
+    \def\carre{(0,0) -- (#3:3.5mm) -- ($(#3:3.5mm)+({#3+90}:3.5mm)$) -- ({#3+90}:3.5mm) -- cycle}
+    \def\arcang{(0,0) -- (#3:4.5mm) arc[start angle=#3, delta angle=#2, radius=4.5mm] -- cycle}
+    \ifnum#2=90
+      \ifcodedroit \draw[gray!70!black, fill=gray!30] \carre;
+      \else\ifcorrige \draw[red, fill=red!20] \carre;
+      \else \draw[gray!70!black, fill=gray!30] \arcang;
+      \fi\fi
+    \else
+      \draw[gray!70!black, fill=gray!30] \arcang;
+    \fi
+    \draw[thick] (P) -- (V) -- (Q);
+    \fill (P) circle (0.8pt); \fill (Q) circle (0.8pt); \fill (V) circle (0.8pt);
+    \node at (#3:2.1) {$#4$};
+    \node at ({#3+#2/2+180}:5mm) {$#5$};
+    \node at ({#3+#2}:2.1) {$#6$};
+  \end{tikzpicture}%
+}
+% Mini-figure (sans lettres) pour le rappel
+\newcommand{\mini}[2]{\angleDessin[0.33]{#1}{#2}{}{}{}}
+
+% Une case de l'exercice 1 : \caseangle{mesure}{rotation}{L1}{V}{L2}{n}
+\newcommand{\caseangle}[6]{%
+  \begin{tabular}{@{}c@{}}
+    \angleDessin[0.66]{#1}{#2}{#3}{#4}{#5} \\[-2mm]
+    $\widehat{#3#4#5}$ est : \\
+    {\small\choixnat{#6}}
+  \end{tabular}}
+\newcommand{\caseangleex}[6]{%
+  \colorbox{gray!15}{\begin{tabular}{@{}c@{}}
+    \angleDessin[0.66]{#1}{#2}{#3}{#4}{#5} \\[-2mm]
+    $\widehat{#3#4#5}$ est : \\
+    {\small\choixnat[2]{#6}}
+  \end{tabular}}}
+
+% Vrai / Faux : \vf{1} (vrai) ou \vf{2} (faux)
+\newcommand{\vf}[1]{\ent{\ifnum#1=1 1\else0\fi}{Vrai}\,/\,\ent{\ifnum#1=2 1\else0\fi}{Faux}}
+
+\newcommand{\feuille}{%
+\setcounter{exercice}{0}
+
+\begin{tcolorbox}[width=\linewidth-1cm,colback=white,colframe=black,boxrule=0.6pt,arc=2mm,left=1mm,right=1mm,top=0.5mm,bottom=0.5mm]
+\textbf{Rappel :} pour connaître la nature d'un angle, je le \textbf{compare à un angle droit} (codé par un petit carré).
+
+\smallskip
+\centering\small
+\renewcommand{\arraystretch}{1.05}\setlength{\tabcolsep}{3pt}
+\codedroittrue
+\begin{tabular}{@{}l|c|c|c|c|c@{}}
+\textbf{Angle} & \textbf{nul} & \textbf{aigu} & \textbf{droit} & \textbf{obtus} & \textbf{plat} \\ \hline
+ & \mini{0}{20} & \mini{45}{0} & \mini{90}{0} & \mini{135}{0} & \mini{180}{0} \\
+\textit{Comparé à} & les côtés & plus \textbf{petit} & codé par & plus \textbf{grand} qu'un droit, & les côtés sont \\
+\textit{l'angle droit} & sont confondus & qu'un angle droit & un petit carré & plus petit qu'un plat & dans le prolongement \\ \hline
+\textit{Mesure}\rule{0pt}{2.4ex} & $0^\circ$ & entre $0^\circ$ et $90^\circ$ & $90^\circ$ & entre $90^\circ$ et $180^\circ$ & $180^\circ$ \\
+\end{tabular}
+\end{tcolorbox}
+\vspace{-1.9em}
+\begin{exercice}[1][Je reconnais un angle sur une figure]
+Pour chaque angle, compare-le à l'angle droit, puis \textbf{entoure} sa nature. \hfill \marqueex\ = exemple
+
+\codedroittrue
+\renewcommand{\arraystretch}{1}
+\begin{tabularx}{\linewidth}{@{}*{4}{>{\centering\arraybackslash}X}@{}}
+\caseangleex{40}{20}{A}{B}{C}{1} &
+\caseangle{90}{30}{D}{E}{F}{2} &
+\caseangle{130}{200}{G}{H}{I}{3} &
+\caseangle{70}{110}{J}{K}{L}{1} \\[2mm]
+\caseangle{180}{150}{M}{N}{P}{4} &
+\caseangle{20}{300}{R}{S}{T}{1} &
+\caseangle{90}{235}{U}{V}{W}{2} &
+\caseangle{155}{10}{X}{Y}{Z}{3} \\
+\end{tabularx}
+\end{exercice}
+
+\vspace{-1.9em}
+\begin{exercice}[2][Je reconnais un angle grâce à sa mesure]
+Complète le tableau avec : \textbf{nul}, \textbf{aigu}, \textbf{droit}, \textbf{obtus} ou \textbf{plat}. \hfill \marqueex\ = exemple
+
+\smallskip
+\renewcommand{\arraystretch}{1.45}
+\begin{tabularx}{\linewidth}{|l|*{10}{>{\centering\arraybackslash}X|}}
+\hline
+\textbf{Mesure} & \cellcolor{gray!15}$35^\circ$ & $90^\circ$ & $120^\circ$ & $180^\circ$ & $89^\circ$ & $91^\circ$ & $0^\circ$ & $179^\circ$ & $60^\circ$ & $145^\circ$ \\ \hline
+\textbf{Nature} & \cellcolor{gray!15}aigu & \rep[\linewidth]{droit} & \rep[\linewidth]{obtus} & \rep[\linewidth]{plat} & \rep[\linewidth]{aigu} & \rep[\linewidth]{obtus} & \rep[\linewidth]{nul} & \rep[\linewidth]{obtus} & \rep[\linewidth]{aigu} & \rep[\linewidth]{obtus} \\ \hline
+\end{tabularx}
+\end{exercice}
+
+\vspace{-1.9em}
+\begin{exercice}[3][Je reconnais des angles dans une figure]
+\begin{minipage}[c]{0.33\linewidth}
+\centering
+\begin{tikzpicture}[scale=0.7]
+  \coordinate (A) at (-3,0); \coordinate (B) at (0,0); \coordinate (C) at (3,0);
+  \coordinate (D) at (0,2.5); \coordinate (E) at (2.2,1.5); \coordinate (G) at (1.6,0);
+  \draw[gray!70!black, fill=gray!30] (B) rectangle ++(-0.3,0.3);
+  \draw[thick] (A) -- (C); \draw[thick] (B) -- (D); \draw[thick] (B) -- (E);
+  \foreach \p in {A,B,C,D,E,G} \fill (\p) circle (1.2pt);
+  \node[below] at (A) {$A$}; \node[below] at (B) {$B$}; \node[below] at (C) {$C$};
+  \node[above] at (D) {$D$}; \node[above right] at (E) {$E$}; \node[below] at (G) {$G$};
+\end{tikzpicture}
+\end{minipage}%
+\begin{minipage}[c]{0.64\linewidth}
+\textbf{a.} $A$, $B$, $G$, $C$ sont alignés. Complète.
+
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{@{}ll@{}}
+\fait{$\widehat{ABD}$ est un angle droit.} & $\widehat{EBC}$ est un angle \rep{aigu}. \\
+$\widehat{ABC}$ est un angle \rep{plat}. & $\widehat{ABE}$ est un angle \rep{obtus}. \\
+$\widehat{DBC}$ est un angle \rep{droit}. & $\widehat{DBE}$ est un angle \rep{aigu}. \\
+$\widehat{EBG}$ est un angle \rep{aigu}. & $\widehat{GBC}$ est un angle \rep{nul}. \\
+\end{tabular}
+\end{minipage}
+
+\medskip
+\begin{minipage}[t]{0.63\linewidth}
+\textbf{b.} Vrai ou faux ? Entoure la bonne réponse.
+
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}l@{\quad}l@{}}
+\fait{Un angle de $90^\circ$ est un angle droit.} & \ent{2}{Vrai}\,/\,\ent{0}{Faux} \\
+Un angle obtus mesure plus de $180^\circ$. & \vf{2} \\
+Un angle aigu est plus petit qu'un angle droit. & \vf{1} \\
+Un angle de $100^\circ$ est un angle aigu. & \vf{2} \\
+\end{tabular}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.35\linewidth}
+\raggedright\textbf{c.} Dessine à main levée un angle \textbf{obtus} $\widehat{xOy}$.
+
+\smallskip
+\centering
+\begin{tikzpicture}
+  \draw[gray] (0,0) rectangle (5.6,1.9);
+  \ifcorrige
+    \begin{scope}[red, shift={(3.4,0.35)}]
+      \draw[fill=red!15] (0,0) -- (0:4.5mm) arc[start angle=0, delta angle=140, radius=4.5mm] -- cycle;
+      \draw[thick] (1.9,0) -- (0,0) -- (140:1.9);
+      \node[below] at (0,0) {$O$}; \node[above] at (1.7,0) {$x$}; \node[left] at (140:1.8) {$y$};
+    \end{scope}
+  \fi
+\end{tikzpicture}
+\end{minipage}
+\end{exercice}
+}
+
+\begin{document}
+
+\corrigefalse
+\feuille
+
+\newpage
+\corrigetrue
+\feuille
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% End:
