@@ -1,5 +1,5 @@
 %% Fiche de préparation de séance (format type INSPE) -- document enseignant.
-%% Pages 1-2 : préparation ; page 3 : calcul mental à projeter ; page 4 : même page, réponses en rouge.
+%% Pages 1-2 : préparation. Calcul mental : diaporama Act-6C04-01-Calcul-Mental-Complements.pdf.
 
 %% Font size %%
 \documentclass[11pt]{article}
@@ -16,32 +16,6 @@
 \newcommand{\champ}[2]{\textbf{#1} & #2 \\ \hline}
 \newcommand{\minutes}[1]{\textbf{#1 min}}
 
-% Calcul mental (pages 3 et 4) : même page, sans puis avec les réponses en rouge.
-\newif\ifcorrige
-\newcommand{\rep}[1]{\makebox[2.2cm]{\ifcorrige\textcolor{red}{\textbf{#1}}\else\dotfill\fi}}
-\newcommand{\calculmental}{%
-\begin{center}
-{\Huge\bfseries Calcul mental}\\[3mm]
-{\Large Écris seulement le résultat.}
-\end{center}
-
-\vspace{6mm}
-\renewcommand{\arraystretch}{2.1}
-{\LARGE
-\begin{tabularx}{\linewidth}{XX}
-\textbf{Complète pour faire 100} & \textbf{Complète pour faire 360} \\
-1. \enskip 35 + \rep{65} = 100 & 6. \enskip 300 + \rep{60} = 360 \\
-2. \enskip 72 + \rep{28} = 100 & 7. \enskip 180 + \rep{180} = 360 \\
-3. \enskip 45 + \rep{55} = 100 & 8. \enskip 270 + \rep{90} = 360 \\
-4. \enskip 8 + \rep{92} = 100 & 9. \enskip 200 + \rep{160} = 360 \\
-5. \enskip 61 + \rep{39} = 100 & 10. \enskip 345 + \rep{15} = 360 \\
-\end{tabularx}}
-
-\vspace{1cm}
-\begin{center}
-\large\textit{Pourquoi 360 ? Un tour complet mesure $360\degre$ : c'est $4$ angles droits ($4 \times 90 = 360$) ou $2$ angles plats ($2 \times 180 = 360$).}
-\end{center}
-}
 
 \begin{document}
 
@@ -70,7 +44,7 @@ Socle : domaine 1 (langages mathématiques), domaine 2 (méthodes : classer, org
 \item de \textbf{classer} une série d'angles dans un tableau.
 \end{itemize}}
 \champ{Prérequis}{Nommer un angle ($\widehat{ABC}$), son sommet, ses côtés (séance 1) ; angle droit et son codage (petit carré) ; points alignés.}
-\champ{Matériel}{\textbf{Professeur} : vidéoprojecteur (calcul mental, figures).\newline
+\champ{Matériel}{\textbf{Professeur} : vidéoprojecteur ; diaporama \textbf{Act-6C04-01} (calcul mental, défilement automatique), figures.\newline
 \textbf{Élèves} : cahier de cours, ardoise ; fiches \textbf{Ex-6C04-05} (nature d'un angle) et \textbf{Ex-6C04-06} (classer des angles), corrigés imprimés (page 2 de chaque fiche) au bureau.}
 \champ{Trace écrite}{Cours, partie II : tableau des angles particuliers + exercice traité (méthode, classement).}
 \end{tabularx}
@@ -91,10 +65,10 @@ angle nul et angle plat souvent oubliés (ils « ne ressemblent pas » à des an
 \textbf{Phase} & \textbf{Durée} & \textbf{Rôle du professeur} & \textbf{Activité des élèves} & \textbf{Modalité / supports} \\ \hline
 
 1. Entrée en classe, automatismes &
-\minutes{10} &
-Projette 10 questions de calcul mental (annexe) : compléments à $100$ puis à $360$, $\approx 20$ s par question. Correction rapide, fait verbaliser une procédure (« $360 - 270$ : je pense $270 + 30 = 300$, $+ 60$ »). &
+\minutes{12} &
+Lance le diaporama Act-6C04-01 : 20 questions qui défilent seules, 25 s chacune ($\approx 8$ min) : 10 compléments à $100$ puis 10 à $360$, du plus facile au plus difficile (avec retenues). Correction rapide, fait verbaliser une procédure (« $360 - 270$ : je pense $270 + 30 = 300$, $+ 60$ »). &
 Répondent sur l'ardoise ou au cahier, sans poser l'opération. Expliquent leur stratégie. &
-Individuel puis collectif. Diaporama (annexe). \\ \hline
+Individuel puis collectif. Diaporama Act-6C04-01 (correction en fin de diaporama). \\ \hline
 
 2. Rappel de la séance 1 &
 \minutes{5} &
@@ -103,7 +77,7 @@ Répondent à l'oral, un élève vient écrire au tableau. &
 Collectif, oral. \\ \hline
 
 3. Découverte : trier des angles &
-\minutes{8} &
+\minutes{7} &
 Projette 6 angles variés (orientations différentes). Question : « Comparez chaque angle à l'angle droit (le coin d'une feuille). Faites des familles. » Circule, repère les procédures. &
 Comparent chaque angle à l'angle droit, proposent des familles : plus petit / pareil / plus grand que l'angle droit, « tout plat ». &
 Binômes, figures projetées. \\ \hline
@@ -115,7 +89,7 @@ Collent/copient le tableau de la partie II du cours, complètent l'exercice trai
 Collectif. Cours partie II. \\ \hline
 
 5. Entraînement différencié &
-\minutes{18} &
+\minutes{17} &
 Présente l'exemple grisé (exercice traité) de la fiche Ex-6C04-05. Circule : aide prioritaire aux élèves repérés en phase 3. Valide puis donne le \textbf{corrigé} (page 2) pour l'autocorrection. &
 \textbf{Tous} : fiche Ex-6C04-05 (reconnaître), puis autocorrection au stylo vert.\newline
 \textbf{Élèves rapides} : fiche Ex-6C04-06 (classer des angles), puis tutorat d'un camarade. &
@@ -141,10 +115,6 @@ Individuel, ardoise. \\ \hline
 \champ{Bilan \textit{a posteriori}}{\vspace{1.6cm}}
 \end{tabularx}
 
-\newpage
-\corrigefalse \calculmental
-\newpage
-\corrigetrue \calculmental
 
 \end{document}
 

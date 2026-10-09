@@ -47,7 +47,7 @@
     \node at ({#3+#2}:2.15) {$#6$};
   \end{tikzpicture}%
 }
-% Une case du panneau : figure + nom de l'angle (+ mesure réelle en rouge
+% Une case du tableau d'angles : figure + nom de l'angle (+ mesure réelle en rouge
 % dans le corrigé). \caseAngle{mesure}{rotation}{L1}{V}{L2}
 \newcommand{\caseAngle}[5]{%
   \begin{tabular}{@{}c@{}}
@@ -91,26 +91,28 @@ $0\degre$ & entre $0\degre$ et $90\degre$ & $90\degre$ & entre $90\degre$ et $18
 \end{tcolorbox}
 \vspace{-1.6em}
 % ------------------------------------------------------------------
-% Panneau de l'exercice 1 : mesures réelles (différentes du QCM)
+% Tableau d'angles de l'exercice 1 : mesures réelles (différentes du QCM)
 %  ABC  35  aigu   (exemple)    | DEF 125 obtus | GHI  90 droit
 %  JKL 180  plat                | MNP  55 aigu  | RST 150 obtus
 %  UVW  90  droit               | XYZ  25 aigu  | CAD 135 obtus
 %  FOG  90  droit               | PUR  65 aigu  | LQM 180 plat
 % Bilan : 4 aigus, 3 droits, 3 obtus, 2 plats.
 % ------------------------------------------------------------------
-\begin{exercice}[1][Classe les angles du panneau]
+\begin{exercice}[1][Classe les angles du tableau]
 Écris le nom de chaque angle dans la bonne colonne. \hfill \marqueex\ = exemple
 
 \smallskip
 \centering
-\setlength{\tabcolsep}{1.5pt}\fbox{\begin{tabular}{@{}cccccc@{}}
+\setlength{\tabcolsep}{1.5pt}\renewcommand{\arraystretch}{1}%
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
 \caseAngle{35}{20}{A}{B}{C} & \caseAngle{125}{250}{D}{E}{F} &
 \caseAngle{90}{35}{G}{H}{I} & \caseAngle{180}{160}{J}{K}{L} &
-\caseAngle{55}{110}{M}{N}{P} & \caseAngle{150}{-5}{R}{S}{T} \\[0.5mm]
+\caseAngle{55}{110}{M}{N}{P} & \caseAngle{150}{-5}{R}{S}{T} \\ \hline
 \caseAngle{90}{205}{U}{V}{W} & \caseAngle{25}{325}{X}{Y}{Z} &
 \caseAngle{135}{60}{C}{A}{D} & \caseAngle{90}{300}{F}{O}{G} &
-\caseAngle{65}{190}{P}{U}{R} & \caseAngle{180}{15}{L}{Q}{M} \\
-\end{tabular}}
+\caseAngle{65}{190}{P}{U}{R} & \caseAngle{180}{15}{L}{Q}{M} \\ \hline
+\end{tabular}
 
 \medskip
 \renewcommand{\arraystretch}{1.3}
@@ -125,10 +127,26 @@ $0\degre$ & entre $0\degre$ et $90\degre$ & $90\degre$ & entre $90\degre$ et $18
 \end{exercice}
 
 \vspace{-1.5em}
+\begin{exercice}[2][Range les angles du tableau]
+Range ces angles du \textbf{plus petit} au \textbf{plus grand} (aide-toi de leur nature). \hfill \marqueex\ = exemple
+
+\smallskip
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}ll@{}}
+\fait{$\widehat{ABC}$, \ $\widehat{JKL}$, \ $\widehat{GHI}$} &
+\fait{$\widehat{ABC} < \widehat{GHI} < \widehat{JKL}$} \\
+$\widehat{RST}$, \ $\widehat{XYZ}$, \ $\widehat{UVW}$, \ $\widehat{LQM}$ &
+\rep[1.4cm]{$\widehat{XYZ}$} $<$ \rep[1.4cm]{$\widehat{UVW}$} $<$ \rep[1.4cm]{$\widehat{RST}$} $<$ \rep[1.4cm]{$\widehat{LQM}$} \\
+$\widehat{DEF}$, \ $\widehat{XYZ}$, \ $\widehat{RST}$, \ $\widehat{MNP}$ \quad &
+\rep[1.4cm]{$\widehat{XYZ}$} $<$ \rep[1.4cm]{$\widehat{MNP}$} $<$ \rep[1.4cm]{$\widehat{DEF}$} $<$ \rep[1.4cm]{$\widehat{RST}$} \\
+\end{tabular}
+\end{exercice}
+
+\vspace{-1.5em}
 % Mesures : nul 0 ; aigus 45 (ex.), 12, 89, 1, 75 ; droit 90 ;
 % obtus 120, 91, 179, 135 ; plat 180.
-\begin{exercice}[2][Classe les mesures]
-Range chaque mesure d'angle dans la bonne colonne. \hfill \marqueex\ = exemple
+\begin{exercice}[3][Classe les mesures]
+\textbf{a.} Range chaque mesure d'angle dans la bonne colonne. \hfill \marqueex\ = exemple
 
 \smallskip
 \centering
@@ -145,23 +163,6 @@ Range chaque mesure d'angle dans la bonne colonne. \hfill \marqueex\ = exemple
 \casetab{1.05cm}{\cor{$120\degre$ \ $91\degre$ \ $179\degre$ \ $135\degre$}} &
 \casetab{1.05cm}{\cor{$180\degre$}} \\ \hline
 \end{tabularx}
-\end{exercice}
-
-\vspace{-1.5em}
-\begin{exercice}[3][Pour aller plus loin]
-\textbf{a.} Range ces angles du panneau du \textbf{plus petit} au \textbf{plus grand} (utilise leur nature !). \hfill \marqueex\ = exemple
-
-\smallskip
-\renewcommand{\arraystretch}{1.4}
-\begin{tabular}{@{}ll@{}}
-\fait{$\widehat{ABC}$, \ $\widehat{JKL}$, \ $\widehat{GHI}$} &
-\fait{$\widehat{ABC} < \widehat{GHI} < \widehat{JKL}$} \\
-$\widehat{RST}$, \ $\widehat{XYZ}$, \ $\widehat{UVW}$, \ $\widehat{LQM}$ &
-\rep[1.4cm]{$\widehat{XYZ}$} $<$ \rep[1.4cm]{$\widehat{UVW}$} $<$ \rep[1.4cm]{$\widehat{RST}$} $<$ \rep[1.4cm]{$\widehat{LQM}$} \\
-$\widehat{DEF}$, \ $\widehat{XYZ}$, \ $\widehat{RST}$, \ $\widehat{MNP}$ \quad &
-\rep[1.4cm]{$\widehat{XYZ}$} $<$ \rep[1.4cm]{$\widehat{MNP}$} $<$ \rep[1.4cm]{$\widehat{DEF}$} $<$ \rep[1.4cm]{$\widehat{RST}$} \\
-\end{tabular}
-
 \smallskip
 \textbf{b.} Je suis un angle \textbf{obtus}. Entoure mes mesures possibles : \hfill
 \entoure{$60\degre$}\,\entoure[r]{$95\degre$}\,\entoure{$90\degre$}\,\entoure[r]{$170\degre$}\,\entoure{$180\degre$}\,\entoure[r]{$120\degre$}\,\entoure[r]{$179\degre$}

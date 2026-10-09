@@ -88,21 +88,17 @@
 \setcounter{exercice}{0}
 
 \begin{tcolorbox}[width=\linewidth-1cm,colback=white,colframe=black,boxrule=0.6pt,arc=2mm,left=1mm,right=1mm,top=0.5mm,bottom=0.5mm]
-\textbf{Rappel :} pour connaître la nature d'un angle, je le \textbf{compare à un angle droit} (codé par un petit carré).
+\textbf{Rappel :} je \textbf{compare} l'angle à un \textbf{angle droit} (codé par un petit carré).
 
 \smallskip
-\centering\small
-\renewcommand{\arraystretch}{1.05}\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.25}\setlength{\tabcolsep}{2pt}
 \codedroittrue
-\begin{tabular}{@{}l|c|c|c|c|c@{}}
-\textbf{Angle} & \textbf{nul} & \textbf{aigu} & \textbf{droit} & \textbf{obtus} & \textbf{plat} \\ \hline
- & \mini{0}{20} & \mini{45}{0} & \mini{90}{0} & \mini{135}{0} & \mini{180}{0} \\
-\textit{Comparé à} & les côtés & plus \textbf{petit} & codé par & plus \textbf{grand} qu'un droit, & les côtés sont \\
-\textit{l'angle droit} & sont confondus & qu'un angle droit & un petit carré & plus petit qu'un plat & dans le prolongement \\ \hline
-\textit{Mesure}\rule{0pt}{2.4ex} & $0^\circ$ & entre $0^\circ$ et $90^\circ$ & $90^\circ$ & entre $90^\circ$ et $180^\circ$ & $180^\circ$ \\
-\end{tabular}
+\begin{tabularx}{\linewidth}{@{}*{5}{>{\centering\arraybackslash}X}@{}}
+\textbf{nul} \ \raisebox{-0.5ex}{\mini{0}{20}} & \textbf{aigu} \ \raisebox{-0.5ex}{\mini{45}{0}} & \textbf{droit} \ \raisebox{-0.5ex}{\mini{90}{0}} & \textbf{obtus} \ \raisebox{-0.5ex}{\mini{135}{0}} & \textbf{plat} \ \raisebox{-0.5ex}{\mini{180}{0}} \\
+$\widehat{\alpha} = 0^\circ$ & $0^\circ < \widehat{\alpha} < 90^\circ$ & $\widehat{\alpha} = 90^\circ$ & $90^\circ < \widehat{\alpha} < 180^\circ$ & $\widehat{\alpha} = 180^\circ$ \\
+\end{tabularx}
 \end{tcolorbox}
-\vspace{-1.9em}
+\vspace{-1.3em}
 \begin{exercice}[1][Je reconnais un angle sur une figure]
 Pour chaque angle, compare-le à l'angle droit, puis \textbf{entoure} sa nature. \hfill \marqueex\ = exemple
 
